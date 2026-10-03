@@ -1,0 +1,12 @@
+{
+  "appId": "local.pace.analyst",
+  "productName": "PACE",
+  "directories": { "output": "../pace-desktop" },
+  "files": ["dist/**/*", "desktop/**/*", "package.json"],
+  "asar": true,
+  "win": {
+    "target": [{ "target": "portable", "arch": ["x64"] }],
+    "icon": "public/brand/pace-logo.png",
+    "artifactName": "PACE-${version}-Windows.${ext}"
+  }
+}

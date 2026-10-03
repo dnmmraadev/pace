@@ -1,0 +1,50 @@
+import type {Question} from './curriculum';
+export const forwardDates=[
+{date:'2026-11-14',available:900,previous:660,otb:740,lastYear:700,adr:280,bar:320,netPickup:100,event:'Festival opening'},
+{date:'2026-11-15',available:900,previous:790,otb:850,lastYear:770,adr:300,bar:340,netPickup:90,event:'Festival peak'},
+{date:'2026-11-16',available:900,previous:690,otb:780,lastYear:740,adr:290,bar:330,netPickup:100,event:'Festival closing'},
+{date:'2026-11-17',available:900,previous:440,otb:460,lastYear:520,adr:245,bar:270,netPickup:100,event:'No event'},
+{date:'2026-11-18',available:900,previous:450,otb:410,lastYear:530,adr:230,bar:255,netPickup:90,event:'Group wash reported'},
+{date:'2026-11-19',available:900,previous:500,otb:520,lastYear:550,adr:240,bar:265,netPickup:120,event:'No event'},
+{date:'2026-11-20',available:900,previous:630,otb:700,lastYear:650,adr:270,bar:305,netPickup:130,event:'Weekend arrivals'},
+];
+export const reservations=[
+{id:'R001',booked:'2026-10-01',arrival:'2026-11-14',departure:'2026-11-17',channel:'Direct',segment:'Leisure',status:'Confirmed',roomNights:6,revenue:1800,commission:0.03},
+{id:'R002',booked:'2026-10-02',arrival:'2026-11-14',departure:'2026-11-16',channel:'OTA',segment:'Leisure',status:'Confirmed',roomNights:2,revenue:640,commission:0.18},
+{id:'R003',booked:'2026-10-03',arrival:'2026-11-17',departure:'2026-11-20',channel:'Direct',segment:'Corporate',status:'Confirmed',roomNights:3,revenue:750,commission:0.03},
+{id:'R004',booked:'2026-10-04',arrival:'2026-11-18',departure:'2026-11-21',channel:'Wholesale',segment:'Leisure',status:'Cancelled',roomNights:3,revenue:660,commission:0},
+{id:'R005',booked:'2026-10-05',arrival:'2026-11-15',departure:'2026-11-18',channel:'GDS',segment:'Corporate',status:'Confirmed',roomNights:3,revenue:900,commission:0.10},
+{id:'R006',booked:'2026-10-06',arrival:'2026-11-15',departure:'2026-11-17',channel:'OTA',segment:'Leisure',status:'Confirmed',roomNights:2,revenue:620,commission:0.18},
+{id:'R007',booked:'2026-10-07',arrival:'2026-11-18',departure:'2026-11-18',channel:'Direct',segment:'Leisure',status:'Confirmed',roomNights:0,revenue:240,commission:0.03},
+{id:'R008',booked:'2026-10-08',arrival:'2026-11-17',departure:'2026-11-20',channel:'Wholesale',segment:'Leisure',status:'Confirmed',roomNights:6,revenue:1320,commission:0},
+];
+export const channelMix=[{channel:'Direct',rooms:280,revenue:75600,cost:2268},{channel:'OTA',rooms:300,revenue:84000,cost:15120},{channel:'Wholesale',rooms:120,revenue:26400,cost:0},{channel:'GDS',rooms:20,revenue:6000,cost:600}];
+export const diagnostic:Question[]=[
+{id:'diag-occ',prompt:'720 rooms sold out of 900 available: occupancy (%)?',answer:80,unit:'%',explanation:'720 / 900 × 100 = 80%.'},
+{id:'diag-adr',prompt:'$180,000 room revenue across 720 sold room nights: ADR?',answer:250,unit:'USD',explanation:'180,000 / 720 = $250.'},
+{id:'diag-rev',prompt:'80% occupancy and $250 ADR: RevPAR?',answer:200,unit:'USD',explanation:'0.80 × 250 = $200.'},
+{id:'diag-pickup',prompt:'Same stay date: OTB moves from 600 to 650. Net pickup?',answer:50,unit:'rooms',explanation:'650 − 600 = +50 rooms.'},
+{id:'diag-forecast',prompt:'OTB 600 + expected net remaining pickup 150. Forecast sold rooms?',answer:750,unit:'rooms',explanation:'600 + 150 = 750 rooms.'},
+];
+export const interview:Question[]=[...diagnostic.map(q=>({...q,id:'interview-'+q.id})),
+{id:'interview-excel',prompt:'Revenue totals must be grouped by channel and status. Which function fits?',answer:'SUMIFS',options:['XLOOKUP','SUMIFS','COUNTIFS'],explanation:'SUMIFS adds values meeting multiple conditions; COUNTIFS counts matching records.'},
+{id:'interview-ops',prompt:'PMS and revenue report disagree. What is your first step?',answer:'Reconcile business date, status, room allocation and refresh time',options:['Change BAR','Reconcile business date, status, room allocation and refresh time','Ignore the PMS'],explanation:'Your operations experience helps validate inputs before making commercial decisions.'},
+{id:'interview-action',prompt:'A nearly full date has accelerating pickup. What would you do?',answer:'Check net value and remaining demand, then evaluate higher rates',options:['Discount to reach 100%','Check net value and remaining demand, then evaluate higher rates','Close all sales immediately'],explanation:'Protect scarce inventory while considering demand uncertainty, mix and displacement.'}
+];
+export const capstoneChecks:Question[]=[
+{id:'cap-occ',prompt:'Yesterday occupancy (%)',answer:80,unit:'%',explanation:'720 / 900 × 100 = 80%.'},
+{id:'cap-adr',prompt:'Yesterday ADR from the channel production table',answer:266.67,tolerance:.05,unit:'USD',explanation:'Total room revenue $192,000 / 720 room nights = $266.67.'},
+{id:'cap-revpar',prompt:'Yesterday RevPAR',answer:213.33,tolerance:.05,unit:'USD',explanation:'$192,000 / 900 = $213.33.'},
+{id:'cap-forecast',prompt:'November 15 constrained forecast of sold rooms',answer:900,unit:'rooms',explanation:'850 + 90 = 940 unconstrained, but capacity is 900.'},
+{id:'cap-pace',prompt:'November 18 room pace difference against equivalent prior-year lead time',answer:-120,unit:'rooms',explanation:'410 − 530 = −120 rooms; current pickup is also −40.'},
+{id:'cap-net',prompt:'Yesterday OTA net room revenue after acquisition cost',answer:68880,unit:'USD',explanation:'$84,000 − $15,120 = $68,880; operating costs are still excluded.'}
+];
+export const capstoneRubric=[
+['Compression','Nov 15: 850 OTB, +60 pickup, +80 pace; estimated 940 demand exceeds 900 rooms. Evaluate higher rates and low-value offer restrictions.'],
+['Need dates','Nov 17–19 are weaker. Nov 18 has 410 OTB, −40 pickup and −120 pace. Validate group wash, then consider targeted demand stimulation.'],
+['Channel value','OTA delivers 300 room nights but costs $15,120. Compare net contribution and incrementality before reallocating availability. Direct is not free.'],
+['Forecast','Cap Nov 15 at 900 sold rooms. Forecast Nov 18 at 500 rooms / 55.6% using +90 net remaining pickup. Show a downside case and justify the pickup assumptions.'],
+['Pricing','Do not discount the festival and weak dates together. BAR is an offer, not forecast ADR. Evaluate room-type demand and the total-stay contribution.'],
+['Data quality','R007 has $240 revenue but zero room nights and identical arrival/departure. Quarantine for reconciliation, not silent zero-ADR substitution. The reservation sample is not the full production ledger.'],
+];
+

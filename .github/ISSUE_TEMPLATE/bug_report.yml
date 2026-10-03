@@ -1,0 +1,24 @@
+name: Bug report
+description: Report reproducible incorrect behavior
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Use synthetic examples. Do not attach personal progress or profiles.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: PACE version and desktop environment
+      description: Include Windows version or browser and whether this is the native app.
+    validations:
+      required: true
+

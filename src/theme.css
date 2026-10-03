@@ -1,0 +1,27 @@
+/* PACE / Graphite–Teal. Canonical colors live here, never in components. */
+:root {
+  color-scheme: dark;
+  --color-background: #0B0F14;
+  --color-surface: #121821;
+  --color-elevated: #18202B;
+  --color-border: #273140;
+  --color-text: #E8EDF2;
+  --color-secondary: #9AA7B5;
+  --color-muted: #6E7A88;
+  --color-accent: #4FD1C5;
+  --color-accent-active: #38B2AC;
+  --color-success: #68D391;
+  --color-warning: #F6AD55;
+  --color-danger: #FC8181;
+
+  --surface-selected: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface));
+  --surface-success: color-mix(in srgb, var(--color-success) 7%, var(--color-surface));
+  --surface-warning: color-mix(in srgb, var(--color-warning) 7%, var(--color-surface));
+  --surface-danger: color-mix(in srgb, var(--color-danger) 7%, var(--color-surface));
+  --overlay-backdrop: color-mix(in srgb, var(--color-background) 86%, transparent);
+  --overlay-shadow: color-mix(in srgb, var(--color-background) 65%, transparent);
+  --font-sans: Inter, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', Consolas, monospace;
+  --radius-control: 4px;
+  --radius-panel: 6px;
+}

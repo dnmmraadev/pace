@@ -1,0 +1,17 @@
+name: Improvement proposal
+description: Describe a focused improvement to PACE
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Learner problem
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and scope
+      description: Explain how this fits the desktop learning workstation.
+    validations:
+      required: true
+

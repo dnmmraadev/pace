@@ -1,0 +1,38 @@
+{
+  "name": "pace",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "test": "tsx --test tests/learning.test.ts",
+    "test:browser": "playwright test",
+    "desktop": "npm run build && electron .",
+    "desktop:package": "npm run build && electron-builder --config electron-builder.json --win portable --x64 --publish never"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  },
+  "main": "desktop/main.cjs",
+  "description": "PACE Revenue Analyst Learning Workspace",
+  "author": "PACE",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dnmmraadev/pace.git"
+  }
+}

@@ -1,0 +1,23 @@
+name: Learning content correction
+description: Flag an ambiguous explanation or incorrect calculation
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Lesson, concept or exercise
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction and reasoning
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Supporting industry sources
+      description: Link primary references where relevant.
+    validations:
+      required: true
+
