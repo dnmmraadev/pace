@@ -11,7 +11,7 @@ For a distributable Windows x64 portable build:
 
     npm run desktop:package
 
-Output is placed in the adjacent pace-desktop directory, outside the source tree. PACE-1.0.0-Windows.exe is the portable launcher; the packaging process can also leave an unpacked application directory. Do not commit generated executables.
+Output is placed in the adjacent pace-desktop directory, outside the source tree. PACE-0.1.0-beta.1-Windows.exe is the portable launcher; the packaging process can also leave an unpacked application directory. Do not commit generated executables.
 
 The application loads its bundled renderer without a running Vite server. Packaging is configured with publishing disabled. This repository does not provide automatic release publishing.
 

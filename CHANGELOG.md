@@ -1,6 +1,8 @@
 # Changelog
 
-## 1.0.0 — 2026-10-03
+## 0.1.0-beta.1 — 2026-10-03
+
+First public evaluation release. The previous 1.0.0 package value was an unpublished development placeholder; see [versioning](docs/versioning.md).
 
 - English desktop Revenue Management learning workstation with synthetic resort data.
 - Guided lessons, calculation feedback, retrieval questions and scenario practice.

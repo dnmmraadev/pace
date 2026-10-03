@@ -20,6 +20,12 @@ PACE uses short lessons, retrieval questions, calculations, decisions and spaced
 
 PACE is English-only and optimized for desktop study. Progress stays on your computer. No account, backend or AI API is required.
 
+## Download the Windows desktop beta
+
+The first public release is **0.1.0-beta.1**. [Download PACE for Windows x64](https://github.com/dnmmraadev/pace/releases/download/v0.1.0-beta.1/PACE-0.1.0-beta.1-Windows.exe), then launch the portable executable. No development tools or server are required. The build is unsigned and stores progress locally.
+
+See the [release notes and checksum](https://github.com/dnmmraadev/pace/releases/tag/v0.1.0-beta.1) and the [version policy](docs/versioning.md) for evaluation-stage limitations and future compatibility rules.
+
 ## Run from source
 
 Use Node.js 22.12 or newer and npm. Node.js 22 is the documented development baseline.
@@ -37,7 +43,7 @@ To build a portable Windows x64 executable:
 
     npm run desktop:package
 
-The executable is written to ../pace-desktop/PACE-1.0.0-Windows.exe. It runs without Node.js or a development server. Source builds require an Electron download during installation. See [desktop setup](docs/desktop.md) for packaging and storage details. Packaged macOS and Linux applications have not been verified.
+The executable is written to ../pace-desktop/PACE-0.1.0-beta.1-Windows.exe. It runs without Node.js or a development server. Source builds require an Electron download during installation. See [desktop setup](docs/desktop.md) for packaging and storage details. Packaged macOS and Linux applications have not been verified.
 
 ## Check a change
 
@@ -77,6 +83,7 @@ Written reasoning is retained for comparison with model responses, but is not au
 | [Design system](docs/design-system.md) | Canonical brand and Graphite / Teal tokens |
 | [Documentation research](docs/documentation-research.md) | Sources reviewed and practices adopted |
 | [Changelog](CHANGELOG.md) | Shipped behavior and limitations |
+| [Versioning](docs/versioning.md) | Version research, compatibility contract and release procedure |
 
 ## Contributing, security and rights
 
