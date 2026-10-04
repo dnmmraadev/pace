@@ -1,3 +1,5 @@
+import {getPreferences} from '../lib/preferences';
+import {preferencesCopy} from './preferences.es';
 import { lessons, modules, type Question } from '../data/curriculum';
 import { formulas } from '../data/formulas';
 import { glossary } from '../data/glossary';
@@ -7,7 +9,7 @@ import { glossaryCopy, formulaCopy, moduleCopy, diagnosticCopy, interviewCopy, c
 import { uiCopy } from './ui.es';
 
 // Translate display values, never persisted IDs, answers, filters or CSV source fields.
-export const catalog: Record<string, string> = { ...uiCopy };
+export const catalog: Record<string, string> = { ...uiCopy, ...preferencesCopy };
 const add = (source: string, target: string) => { catalog[source] = target; };
 const question = (source: Question, target: QuestionCopy) => {
   add(source.prompt, target[0]); add(source.explanation, target[1]);
@@ -55,7 +57,7 @@ const dynamic = (text: string): string | undefined => {
 };
 
 export function es<T>(value: T): T {
-  if (typeof value !== 'string') return value;
+  if (typeof value !== 'string' || getPreferences().language === 'en') return value;
   const text = value.trim().split(String.fromCharCode(92) + 'n').join(String.fromCharCode(10));
   const translated = catalog[text] ?? dynamic(text) ?? lowerCatalog.get(text.toLowerCase());
   if (translated === undefined) return value; // Names, acronyms, codes and technical examples remain intact.

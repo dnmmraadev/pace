@@ -5,6 +5,7 @@ import {capstoneChecks} from '../src/data/scenarios';
 import {emptyProgress} from '../src/lib/learning';
 import {STORAGE_KEY} from '../src/lib/progress';
 test.use({viewport:{width:1440,height:1000}});
+test.beforeEach(async({page})=>{await page.addInitScript(()=>{if(!localStorage.getItem('pace.profile.v1'))localStorage.setItem('pace.profile.v1',JSON.stringify({version:1,name:'',role:'',goal:'',onboardingComplete:true}));});});
 test('desktop lesson loop, review, commands, persistence, CSV and screenshots',async({page})=>{
 await page.goto('http://127.0.0.1:5173');
 await expect(page.getByRole('heading',{name:es('Build the judgment behind the numbers.')})).toBeVisible();
@@ -47,8 +48,8 @@ for(const [name,slug] of [['Hoy','today'],['Ruta de aprendizaje','curriculum'],[
   await page.locator('.left-rail nav').getByRole('button',{name,exact:true}).click();await capture(slug);
 }
 await page.getByRole('tab',{name:'Análisis en Excel',exact:true}).click();
-await page.getByRole('combobox').selectOption('Direct');
-await expect(page.getByRole('combobox')).toHaveValue('Direct');
+await page.locator('main').getByRole('combobox').selectOption('Direct');
+await expect(page.locator('main').getByRole('combobox')).toHaveValue('Direct');
 await expect(page.locator('tbody')).not.toContainText(/\bDirect\b/);
 await page.getByLabel('Crear resumen por canal tipo tabla dinámica').check();
 await capture('excel');

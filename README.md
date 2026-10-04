@@ -18,7 +18,7 @@ PACE uses short lessons, retrieval questions, calculations, decisions and spaced
 - Use the command composer and Ctrl/Cmd + K to navigate.
 - Unlock interview practice after completing lessons and submitting the capstone.
 
-PACE is localized into neutral Latin American Spanish and optimized for desktop study. Progress stays on your computer. No account, backend or AI API is required.
+PACE supports neutral Latin American Spanish and English and is optimized for desktop study. Use the controls in the upper-right toolbar (also available during onboarding) to switch language and light/dark appearance. Both preferences are stored on this device separately from learning progress. A short Spanish onboarding asks for your preferred name and optional professional context and learning goal, then introduces the learning loop. You can skip it or edit your profile from the sidebar. Profile details and progress stay separately on your computer. No account, backend or AI API is required.
 
 ## Download the Windows desktop beta
 

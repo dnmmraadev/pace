@@ -11,6 +11,7 @@
   --text-secondary: #46515B;
   --text-muted: #626C75;
   --accent-primary: #C9A227;
+  --text-on-accent: #0F1419;
   --accent-secondary: #886F3D;
   --accent-soft: color-mix(in srgb, var(--accent-primary) 9%, var(--bg-primary));
   --focus-ring: var(--accent-secondary);
@@ -43,4 +44,25 @@
   --font-mono: 'IBM Plex Mono', Consolas, monospace;
   --radius-control: 4px;
   --radius-panel: 6px;
+}
+
+/* Dark workstation: the same gold identity with accessible graphite surfaces. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg-primary: #0F1419;
+  --bg-secondary: #151B22;
+  --surface-primary: #151B22;
+  --surface-secondary: #1B232D;
+  --border-subtle: #343E49;
+  --border-control: #687583;
+  --text-primary: #E8EDF2;
+  --text-secondary: #B4BFCB;
+  --text-muted: #98A5B3;
+  --accent-secondary: #D7B653;
+  --focus-ring: var(--accent-primary);
+  --status-success: #68D391;
+  --status-warning: #F6AD55;
+  --status-error: #FC8181;
+  --status-info: #91B9DF;
+  --overlay-backdrop: color-mix(in srgb, #0F1419 65%, transparent);
 }

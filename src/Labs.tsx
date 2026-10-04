@@ -1,3 +1,4 @@
+import {getPreferences} from './lib/preferences';
 import {es} from './i18n/es';
 import {useState} from 'react';
 import {Download,Filter,ArrowUpDown} from 'lucide-react';
@@ -5,7 +6,7 @@ import {QuestionForm,SectionTitle,DataTable} from './App';
 import type {Question} from './data/curriculum';
 import {forwardDates,reservations,channelMix,capstoneChecks,capstoneRubric} from './data/scenarios';
 import {downloadCSV,grade,type Progress} from './lib/learning';
-const number=(n:number)=>n.toLocaleString('es-MX',{maximumFractionDigits:2});
+const number=(n:number)=>n.toLocaleString(getPreferences().language==='es'?'es-MX':'en-US',{maximumFractionDigits:2});
 export function ForwardTable(){return <><div className="table-caption"><span>{es("Future stay dates · snapshots Nov 1 → Nov 8, 2026")}</span><button className="subtle" onClick={()=>downloadCSV('synthetic-forward-dates.csv',forwardDates)}><Download size={14}/>{es(" Export CSV")}</button></div><DataTable headers={['Stay date','Available','Nov 1 OTB','Nov 8 OTB','LY same lead','OTB ADR $','BAR $','Net to come','Context']} rows={forwardDates.map(d=>[d.date,d.available,d.previous,d.otb,d.lastYear,d.adr,d.bar,d.netPickup,d.event])}/><p className="table-note">{es("LY is the comparable prior-year position at equivalent lead time. “Net to come” is a training assumption, already net of booking losses. OTB ADR is accommodation-only.")}</p></>}
 export function ChannelTable(){return <><div className="table-caption"><span>{es("Yesterday’s full production · 900 available rooms")}</span><button className="subtle" onClick={()=>downloadCSV('synthetic-channel-production.csv',channelMix)}><Download size={14}/>{es(" Export CSV")}</button></div><DataTable headers={['Channel','Room nights','Room revenue $','Acquisition cost $']} rows={channelMix.map(d=>[d.channel,d.rooms,number(d.revenue),number(d.cost)])}/><p className="table-note">{es("Wholesale revenue is a contracted net amount; zero commission does not mean no distribution economics. Non-room operating revenue yesterday was $108,000.")}</p></>}
 export function PracticeLab({onAttempt}:{onAttempt:(q:Question,v:string)=>void}){const [tab,setTab]=useState('Forward dates');const [channel,setChannel]=useState('All');const [confirmed,setConfirmed]=useState(true);const [sort,setSort]=useState(false);const [clean,setClean]=useState(false);const [pivot,setPivot]=useState(false);const [occ,setOcc]=useState('');const [adr,setAdr]=useState('');const [note,setNote]=useState('');const [sent,setSent]=useState(false);

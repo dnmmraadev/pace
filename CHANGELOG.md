@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Persistent light/dark theme and Spanish/English controls in the desktop toolbar and onboarding; language changes preserve active answers and learning progress.
+
+- Optional Spanish onboarding with preferred name, professional context and learning objective; editable device-local profile independent of learning progress.
+
 - White Gold Dark Accent semantic theme, accessible text/focus and monochrome display of the existing logo.
 - Complete Spanish learner interface and instructional content, with stable IDs, choice values and saved progress.
 - Accent-insensitive Spanish search, Spanish desktop menus and localized analytical table labels.
