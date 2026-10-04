@@ -20,11 +20,11 @@ PACE uses short lessons, retrieval questions, calculations, decisions and spaced
 
 PACE supports neutral Latin American Spanish and English and is optimized for desktop study. Use the controls in the upper-right toolbar (also available during onboarding) to switch language and light/dark appearance. Both preferences are stored on this device separately from learning progress. A short Spanish onboarding asks for your preferred name and optional professional context and learning goal, then introduces the learning loop. You can skip it or edit your profile from the sidebar. Profile details and progress stay separately on your computer. No account, backend or AI API is required.
 
-## Download the Windows desktop beta
+## Download the Windows desktop application
 
-The latest **0.2.0-beta.1** evaluation release includes the White Gold identity, light/dark appearance, Spanish/English selection and optional local onboarding. [Download PACE for Windows x64](https://github.com/dnmmraadev/pace/releases/download/v0.2.0-beta.1/PACE-0.2.0-beta.1-Windows.exe), then launch the portable executable. No development tools or server are required. The build is unsigned and stores progress locally.
+The latest **0.2.0** release includes the White Gold identity, light/dark appearance, Spanish/English selection and optional local onboarding. [Download PACE for Windows x64](https://github.com/dnmmraadev/pace/releases/download/v0.2.0/PACE-0.2.0-Windows.exe), then launch the portable executable. No development tools or server are required. The build is unsigned and stores progress locally.
 
-See the [release notes and checksum](https://github.com/dnmmraadev/pace/releases/tag/v0.2.0-beta.1) and the [version policy](docs/versioning.md) for evaluation-stage limitations and future compatibility rules.
+See the [release notes and checksum](https://github.com/dnmmraadev/pace/releases/tag/v0.2.0) and the [version policy](docs/versioning.md) for current product limitations and future compatibility rules.
 
 ## Run from source
 
@@ -43,7 +43,7 @@ To build a portable Windows x64 executable:
 
     npm run desktop:package
 
-The executable is written to ../pace-desktop/PACE-0.2.0-beta.1-Windows.exe. It runs without Node.js or a development server. Source builds require an Electron download during installation. See [desktop setup](docs/desktop.md) for packaging and storage details. Packaged macOS and Linux applications have not been verified.
+The executable is written to ../builds/0.2.0/package/PACE-0.2.0-Windows.exe. It runs without Node.js or a development server. Source builds require an Electron download during installation. See [desktop setup](docs/desktop.md) for packaging and storage details. Packaged macOS and Linux applications have not been verified.
 
 ## Check a change
 

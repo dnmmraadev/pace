@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.2.0 — 2026-10-03
+
+- Publish the current feature baseline without a prerelease suffix; future releases use plain MAJOR.MINOR.PATCH numbers.
+- Versioned local build output under builds/<version>/package and updated download links.
+- Same learning functionality as 0.2.0-beta.1, with unchanged progress schema, identifiers and Electron security.
+
 ## 0.2.0-beta.1 — 2026-10-03
 
 - Persistent light/dark theme and Spanish/English controls in the desktop toolbar and onboarding; language changes preserve active answers and learning progress.
