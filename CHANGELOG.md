@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.0-beta.1 — 2026-10-03
+
 - Persistent light/dark theme and Spanish/English controls in the desktop toolbar and onboarding; language changes preserve active answers and learning progress.
 
 - Optional Spanish onboarding with preferred name, professional context and learning objective; editable device-local profile independent of learning progress.

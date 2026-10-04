@@ -22,9 +22,9 @@ PACE supports neutral Latin American Spanish and English and is optimized for de
 
 ## Download the Windows desktop beta
 
-The current source includes an unreleased White Gold / Spanish update. The published **0.1.0-beta.1** download retains the original English Graphite / Teal interface. [Download PACE for Windows x64](https://github.com/dnmmraadev/pace/releases/download/v0.1.0-beta.1/PACE-0.1.0-beta.1-Windows.exe), then launch the portable executable. No development tools or server are required. The build is unsigned and stores progress locally.
+The latest **0.2.0-beta.1** evaluation release includes the White Gold identity, light/dark appearance, Spanish/English selection and optional local onboarding. [Download PACE for Windows x64](https://github.com/dnmmraadev/pace/releases/download/v0.2.0-beta.1/PACE-0.2.0-beta.1-Windows.exe), then launch the portable executable. No development tools or server are required. The build is unsigned and stores progress locally.
 
-See the [release notes and checksum](https://github.com/dnmmraadev/pace/releases/tag/v0.1.0-beta.1) and the [version policy](docs/versioning.md) for evaluation-stage limitations and future compatibility rules.
+See the [release notes and checksum](https://github.com/dnmmraadev/pace/releases/tag/v0.2.0-beta.1) and the [version policy](docs/versioning.md) for evaluation-stage limitations and future compatibility rules.
 
 ## Run from source
 
@@ -43,7 +43,7 @@ To build a portable Windows x64 executable:
 
     npm run desktop:package
 
-The executable is written to ../pace-desktop/PACE-0.1.0-beta.1-Windows.exe. It runs without Node.js or a development server. Source builds require an Electron download during installation. See [desktop setup](docs/desktop.md) for packaging and storage details. Packaged macOS and Linux applications have not been verified.
+The executable is written to ../pace-desktop/PACE-0.2.0-beta.1-Windows.exe. It runs without Node.js or a development server. Source builds require an Electron download during installation. See [desktop setup](docs/desktop.md) for packaging and storage details. Packaged macOS and Linux applications have not been verified.
 
 ## Check a change
 

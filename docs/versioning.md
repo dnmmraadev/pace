@@ -13,6 +13,10 @@ The earlier package value 1.0.0 was an unpublished development placeholder, not 
 
 The core learning loop and Windows desktop packaging work. Advanced modules have initial content and the product has limited external validation. A stable 1.0 declaration would therefore be premature. Beta denotes the project's evaluation stage; SemVer itself does not prescribe a universal beta-readiness checklist.
 
+## Current evaluation release: 0.2.0-beta.1
+
+This release adds device-local onboarding, persistent light/dark appearance and Spanish/English selection alongside the White Gold visual system and Spanish instructional content. These feature additions advance the minor baseline under the 0.x policy below. The beta qualifier remains because external validation is still limited. Existing progress identifiers, schema and desktop storage origin remain compatible; profile and display preferences use separate local keys.
+
 ## Compatibility contract
 
 PACE's compatibility surface consists of persisted progress schema and identifiers, documented command behavior, documented CSV export columns and meanings, and supported desktop launch/packaging behavior. There is no external service API.
