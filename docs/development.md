@@ -10,7 +10,7 @@ Content is separate from rendering. Prefer existing components and dependencies.
 
 | Command | What it verifies |
 | --- | --- |
-| npm test | Learning calculations, mastery/review rules and persistence serialization |
+| npm test | Learning calculations, mastery/review rules, persistence serialization and localization coverage |
 | npm run build | TypeScript and production renderer bundle |
 | npm run test:browser | Desktop interaction smoke check |
 | npm run desktop:package | Windows x64 portable packaging |

@@ -18,11 +18,11 @@ PACE uses short lessons, retrieval questions, calculations, decisions and spaced
 - Use the command composer and Ctrl/Cmd + K to navigate.
 - Unlock interview practice after completing lessons and submitting the capstone.
 
-PACE is English-only and optimized for desktop study. Progress stays on your computer. No account, backend or AI API is required.
+PACE is localized into neutral Latin American Spanish and optimized for desktop study. Progress stays on your computer. No account, backend or AI API is required.
 
 ## Download the Windows desktop beta
 
-The first public release is **0.1.0-beta.1**. [Download PACE for Windows x64](https://github.com/dnmmraadev/pace/releases/download/v0.1.0-beta.1/PACE-0.1.0-beta.1-Windows.exe), then launch the portable executable. No development tools or server are required. The build is unsigned and stores progress locally.
+The current source includes an unreleased White Gold / Spanish update. The published **0.1.0-beta.1** download retains the original English Graphite / Teal interface. [Download PACE for Windows x64](https://github.com/dnmmraadev/pace/releases/download/v0.1.0-beta.1/PACE-0.1.0-beta.1-Windows.exe), then launch the portable executable. No development tools or server are required. The build is unsigned and stores progress locally.
 
 See the [release notes and checksum](https://github.com/dnmmraadev/pace/releases/tag/v0.1.0-beta.1) and the [version policy](docs/versioning.md) for evaluation-stage limitations and future compatibility rules.
 
@@ -83,6 +83,7 @@ Written reasoning is retained for comparison with model responses, but is not au
 | [Design system](docs/design-system.md) | Canonical brand and Graphite / Teal tokens |
 | [Documentation research](docs/documentation-research.md) | Sources reviewed and practices adopted |
 | [Changelog](CHANGELOG.md) | Shipped behavior and limitations |
+| [Localization](docs/localization.md) | Spanish terminology and persistence-safe display translation |
 | [Versioning](docs/versioning.md) | Version research, compatibility contract and release procedure |
 
 ## Contributing, security and rights

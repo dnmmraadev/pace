@@ -24,7 +24,7 @@ The application includes 17 lesson loops, including 11 lessons across Modules 1â
 
 Use src/data/curriculum.ts for explanations, formulas, worked examples, calculation exercises, retrieval questions and scenario decisions. Use the related data files for shared reference material and synthetic tables.
 
-Keep instructional text in English. Preserve identifiers referenced by saved progress. Every scored question needs an unambiguous expected answer, appropriate numeric tolerance where applicable, and explanatory feedback. Written scenario rationales should support comparison with a strong analyst response without claiming automatic qualitative scoring.
+Keep learner-facing instructional text in neutral Latin American Spanish; preserve established Revenue Management terms. Preserve identifiers referenced by saved progress. Every scored question needs an unambiguous expected answer, appropriate numeric tolerance where applicable, and explanatory feedback. Written scenario rationales should support comparison with a strong analyst response without claiming automatic qualitative scoring.
 
 ## Mastery and review
 

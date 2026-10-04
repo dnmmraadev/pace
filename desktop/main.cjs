@@ -23,7 +23,7 @@ const openReference = url => {
 async function createWindow() {
   window = new BrowserWindow({
     title: 'PACE', width: 1440, height: 1000, minWidth: 1100, minHeight: 720,
-    backgroundColor: '#0B0F14', show: false,
+    backgroundColor: '#FFFFFF', show: false,
     icon: path.join(__dirname, '../dist/brand/pace-logo.png'),
     autoHideMenuBar: true,
     webPreferences: { nodeIntegration: false, contextIsolation: true, sandbox: true },
@@ -62,10 +62,10 @@ else {
       },
     }));
     Menu.setApplicationMenu(Menu.buildFromTemplate([
-      { label: 'File', submenu: [{ role: 'quit', label: 'Quit PACE' }] },
-      { label: 'Edit', submenu: [{ role: 'undo' }, { role: 'redo' }, { type: 'separator' }, { role: 'cut' }, { role: 'copy' }, { role: 'paste' }, { role: 'selectAll' }] },
-      { label: 'View', submenu: [{ role: 'reload' }, { role: 'resetZoom' }, { role: 'zoomIn' }, { role: 'zoomOut' }, { role: 'togglefullscreen' }] },
-      { label: 'Window', submenu: [{ role: 'minimize' }, { role: 'close' }] },
+      { label: 'Archivo', submenu: [{ role: 'quit', label: 'Salir de PACE' }] },
+      { label: 'Editar', submenu: [{ role: 'undo', label: 'Deshacer' }, { role: 'redo', label: 'Rehacer' }, { type: 'separator' }, { role: 'cut', label: 'Cortar' }, { role: 'copy', label: 'Copiar' }, { role: 'paste', label: 'Pegar' }, { role: 'selectAll', label: 'Seleccionar todo' }] },
+      { label: 'Ver', submenu: [{ role: 'reload', label: 'Recargar' }, { role: 'resetZoom', label: 'Restablecer zoom' }, { role: 'zoomIn', label: 'Acercar' }, { role: 'zoomOut', label: 'Alejar' }, { role: 'togglefullscreen', label: 'Alternar pantalla completa' }] },
+      { label: 'Ventana', submenu: [{ role: 'minimize', label: 'Minimizar' }, { role: 'close', label: 'Cerrar' }] },
     ]));
     await createWindow();
     app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) void createWindow(); });

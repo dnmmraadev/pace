@@ -15,6 +15,7 @@ PACE has a React / TypeScript renderer built with Vite and a small Electron host
 | src/lib/learning.ts | Assessment and review rules |
 | src/lib/progress.ts | Local state and persistence |
 | src/lib/webmcp.ts | Optional feature-detected read-only browser tools |
+| src/i18n/ | Spanish display catalog and terminology |
 | src/theme.css | Centralized design tokens |
 | src/style.css | Component and layout styling |
 | desktop/main.cjs | Native window, application protocol and desktop lifecycle |

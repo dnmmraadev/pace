@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- White Gold Dark Accent semantic theme, accessible text/focus and monochrome display of the existing logo.
+- Complete Spanish learner interface and instructional content, with stable IDs, choice values and saved progress.
+- Accent-insensitive Spanish search, Spanish desktop menus and localized analytical table labels.
+- Localization coverage and desktop compatibility checks.
+
 ## 0.1.0-beta.1 — 2026-10-03
 
 First public evaluation release. The previous 1.0.0 package value was an unpublished development placeholder; see [versioning](docs/versioning.md).

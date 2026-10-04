@@ -1,37 +1,35 @@
-# PACE design system
+# PACE — White Gold Dark Accent
 
-The canonical logo is public/brand/pace-logo.png, supplied by the product owner. Preserve the uppercase wordmark, open geometric A and ascending analytics bars. Do not substitute a CSS-drawn mark.
+The canonical logo remains public/brand/pace-logo.png. Its wordmark geometry is preserved. A monochrome CSS treatment makes the existing asset legible on white without drawing a replacement logo.
 
-## Tokens
+## Semantic tokens
 
-The source of truth is src/theme.css. Components should use its variables rather than new literal colors.
+The source of truth is src/theme.css. Components use semantic variables; compatibility aliases keep the existing component architecture unified.
 
-| Role | Value |
+| Role | Value or derivation |
 | --- | --- |
-| Background | #0B0F14 |
-| Surface | #121821 |
-| Elevated surface | #18202B |
-| Border | #273140 |
-| Primary text | #E8EDF2 |
-| Secondary text | #9AA7B5 |
-| Muted text | #6E7A88 |
-| Accent | #4FD1C5 |
-| Accent active | #38B2AC |
-| Success | #68D391 |
-| Warning | #F6AD55 |
-| Danger | #FC8181 |
+| Primary background / surface | #FFFFFF |
+| Secondary background / surface | #F7F6F3 |
+| Subtle border / separators | #E2DDD6 |
+| Primary gold | #C9A227 |
+| Deep gold | #886F3D |
+| Primary dark | #0F1419 |
+| Secondary text | #46515B |
+| Muted text | #626C75 |
+| Success | #23734B |
+| Warning | #865C13 |
+| Error | #B33B38 |
+| Information | #315D84 |
+| Soft accent / status surfaces | Light color mixes derived from the tokens |
+| Focus ring | Deep gold for visible contrast on white |
+| Control border | Dark / separator mix for readable control boundaries |
 
-Transparency and mixed colors must derive from these tokens. The supplied logo is an asset, not a token-driven recoloring target.
+White dominates the central workspace. Near-white supports the rails and command surface. Gold marks selection, primary actions and progress; deep gold provides readable small interactive text. Primary gold is not used as small body text on white. Gold buttons use dark text. Status colors retain their distinct meaning.
 
 ## Component language
 
-Keep graphite dominant. Use teal for primary interaction, focus, selection and progress. Use success, warning and danger only for semantic states. Use thin borders and radii generally between 4 and 8px. Avoid gradients, decorative motion and repeated floating cards.
+Use compact sans-serif instructions and selective monospace readouts, formulas and commands. Numerical data uses tabular numerals and aligned columns. Keep thin separators and 4–6px radii, with a restrained dialog shadow. Table headers may wrap; dates and numeric values stay on one line. Long formulas wrap in contextual panels.
 
-Use sans-serif text for instructions and interface labels, with selective monospace for formulas, numerical readouts and commands. Use tabular numerals and consistent alignment in tables.
+Preserve the three-part desktop workstation and collapsible right context panel. No mobile navigation is introduced. Buttons and fields have short functional transitions; reduced-motion settings disable them. Keyboard focus remains visible, including the command composer and scrollable tables.
 
-## Workstation layout
-
-Persistent left navigation, a dominant main workspace and a compact collapsible right context panel form the desktop shell. The logo appears at the top of the navigation. Keep tables legible at ordinary laptop widths. No mobile navigation system is required.
-
-Preserve keyboard navigation, Ctrl/Cmd + K, the local command composer and accessible modal focus behavior. All controls require visible focus and understandable labels.
-
+See [localization](localization.md) for terminology and display-value compatibility rules.

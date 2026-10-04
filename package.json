@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
-    "test": "tsx --test tests/learning.test.ts",
+    "test": "tsx --test tests/learning.test.ts tests/localization.test.ts",
     "test:browser": "playwright test",
     "desktop": "npm run build && electron .",
     "desktop:package": "npm run build && electron-builder --config electron-builder.json --win portable --x64 --publish never"
