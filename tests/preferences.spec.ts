@@ -12,16 +12,25 @@ test('theme and language switch without losing an active answer or saved progres
     localStorage.setItem(profile, JSON.stringify({ version: 1, name: 'Ana', role: '', goal: '', onboardingComplete: true }));
   }, { key: STORAGE_KEY, value: progress, profile: PROFILE_KEY });
   await page.goto('http://127.0.0.1:5173');
+  const themeButton=page.locator('.topbar .theme-switch');
+  const languageButton=page.locator('.topbar .language-switch');
+  await expect(languageButton).toHaveText('ES');
+  await expect(page.locator('.preferences-controls select')).toHaveCount(0);
+  const themeBounds=await themeButton.boundingBox(),languageBounds=await languageButton.boundingBox();
+  expect(languageBounds!.x-themeBounds!.x-themeBounds!.width).toBeCloseTo(8,1);
+  expect(languageBounds!.y).toBe(themeBounds!.y);
+  expect(languageBounds!.height).toBe(themeBounds!.height);
   await page.getByRole('button', { name: 'Cambiar a modo oscuro' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
-  await page.getByRole('combobox', { name: 'Idioma', exact: true }).selectOption('en');
+  await page.getByRole('button', { name: 'Cambiar a inglés', exact: true }).click();
+  await expect(languageButton).toHaveText('ENG');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.getByRole('button', { name: 'Continue Session', exact: true })).toBeVisible();
   await page.screenshot({ path: 'test-results/preferences-dark-english.png' });
   await page.getByRole('button', { name: 'Continue Session', exact: true }).click();
   await page.getByRole('button', { name: 'Start practice', exact: true }).click();
   await page.getByPlaceholder('Enter your answer').fill('75');
-  await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('es');
+  await page.getByRole('button', { name: 'Switch to Spanish', exact: true }).click();
   await expect(page.getByPlaceholder('Escribe tu respuesta')).toHaveValue('75');
   await page.screenshot({ path: 'test-results/preferences-dark-lesson.png' });
   await page.reload();
@@ -40,7 +49,7 @@ test('theme and language switch without losing an active answer or saved progres
 test('onboarding and profile labels follow the selected language', async ({ page }) => {
   await page.goto('http://127.0.0.1:5173');
   const dialog = page.getByRole('dialog');
-  await dialog.getByRole('combobox', { name: 'Idioma', exact: true }).selectOption('en');
+  await dialog.getByRole('button', { name: 'Cambiar a inglés', exact: true }).click();
   await expect(dialog).toContainText('Welcome to PACE');
   await dialog.getByRole('button', { name: 'Switch to dark mode' }).click();
   await dialog.getByLabel('Name or preferred name').fill('Alex');
@@ -50,7 +59,7 @@ test('onboarding and profile labels follow the selected language', async ({ page
   await dialog.getByRole('button', { name: 'Enter PACE' }).click();
   await page.getByRole('button', { name: 'Edit profile' }).click();
   await expect(dialog.getByLabel('Name or preferred name')).toHaveValue('Alex');
-  await dialog.getByRole('combobox', { name: 'Language', exact: true }).selectOption('es');
+  await dialog.getByRole('button', { name: 'Switch to Spanish', exact: true }).click();
   await expect(dialog.getByLabel('Nombre o nombre preferido')).toHaveValue('Alex');
   await expect(dialog.getByLabel('Objetivo')).toHaveValue('analyst');
   await page.screenshot({ path: 'test-results/preferences-dark-profile.png' });

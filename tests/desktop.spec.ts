@@ -7,7 +7,7 @@ import {STORAGE_KEY} from '../src/lib/progress';
 test.use({viewport:{width:1440,height:1000}});
 test.beforeEach(async({page})=>{await page.addInitScript(()=>{if(!localStorage.getItem('pace.profile.v1'))localStorage.setItem('pace.profile.v1',JSON.stringify({version:1,name:'',role:'',goal:'',onboardingComplete:true}));});});
 
-test('wide workspace alignment, reference focus and local interview preview',async({page})=>{
+test('wide workspace alignment, reference focus and interview preview',async({page})=>{
 await page.setViewportSize({width:2560,height:1440});
 await page.goto('http://127.0.0.1:5173');
 for(const theme of ['light','dark']){

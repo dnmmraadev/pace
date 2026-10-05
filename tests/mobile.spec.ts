@@ -74,7 +74,7 @@ test('narrow layouts, local commands, tables, CSV, dialogs and language switchin
   await page.getByRole('button',{name:'Exportar CSV',exact:true}).click();
   expect((await download).suggestedFilename()).toBe('synthetic-forward-dates.csv');
   await changeTheme(page,'Cambiar a modo oscuro');
-  await page.getByRole('combobox',{name:'Idioma',exact:true}).selectOption('en');
+  await page.getByRole('button',{name:'Cambiar a inglés',exact:true}).click();
   for(const [width,height] of [[320,740],[390,844],[768,1024],[844,390]]){
     await page.setViewportSize({width,height});
     await noOverflow(page);
@@ -103,6 +103,7 @@ test('logo blends with each theme while original bars remain unfiltered', async(
   const originalBounds=await logo.boundingBox();
   const originalBarsBounds=await bars.boundingBox();
   for(const button of await page.locator('.topbar button:visible').all()){
+    if(await button.locator('svg').count()===0)continue;
     const box=await button.boundingBox(),icon=await button.locator('svg').boundingBox();
     if(box&&icon){
       expect(Math.abs(box.x+box.width/2-icon.x-icon.width/2)).toBeLessThan(1);
