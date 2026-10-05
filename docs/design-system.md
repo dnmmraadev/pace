@@ -1,6 +1,6 @@
 # PACE — White Gold Dark Accent
 
-The canonical logo remains public/brand/pace-logo.png. Its wordmark geometry is preserved. The asset supplies the lettering alpha mask, colored with the current primary text token. The original analytical bars are displayed unchanged in color through a clip covering their original coordinates. The mark has no surrounding background, border, padding or shadow; it blends into both themes without changing its geometry or the image file.
+The canonical logo remains public/brand/pace-logo.png. Its wordmark geometry is preserved. The asset supplies the lettering alpha mask, colored with the current primary text token. The bar region is excluded from that mask so theme-dependent lettering does not overlap the original analytical bars. Those bars are displayed unchanged in color through a clip covering their original coordinates. Explicit logo dimensions prevent theme changes from shifting its geometry. The mark has no surrounding background, border, padding or shadow; it blends into both themes without changing the image file.
 
 ## Semantic tokens
 
@@ -29,6 +29,8 @@ White dominates the central workspace. Near-white supports the rails and command
 ## Component language
 
 Use compact sans-serif instructions and selective monospace readouts, formulas and commands. Numerical data uses tabular numerals and aligned columns. Keep thin separators and 4–6px radii, with a restrained dialog shadow. Table headers may wrap; dates and numeric values stay on one line. Long formulas wrap in contextual panels.
+
+Language selection stays in the top toolbar. The light/dark appearance control sits beside the sidebar profile, with a compact state indicator. On smaller screens it is available inside the navigation dialog. Toolbar icons share centered control dimensions; the onboarding retains both preference controls.
 
 Preserve the three-part desktop workstation and collapsible right context panel. At widths of 1000px and below, navigation and contextual references open as native modal dialogs. Both reuse the desktop content; main tables scroll within their own boundaries. Touch targets, forms, stacked exercise layouts and dynamic viewport height support phone/tablet study. Buttons and fields have short functional transitions; reduced-motion settings disable them. Keyboard focus remains visible, including the command composer and scrollable tables.
 

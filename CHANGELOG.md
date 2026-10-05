@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Consistent header icon alignment and logo dimensions across themes; appearance control moved beside the sidebar profile (inside navigation on smaller screens).
 - Responsive phone/tablet browser workspace with navigation and context dialogs, scrollable analytical tables and touch-friendly study controls.
 - PACE logo blends into each theme without a surrounding tile: lettering follows the text token and analytical bars retain their original colors.
 

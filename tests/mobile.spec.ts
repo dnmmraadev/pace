@@ -14,6 +14,15 @@ const noOverflow = async (page: import('@playwright/test').Page) => {
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
   expect(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1)).toBeTruthy();
 };
+const changeTheme = async (page: import('@playwright/test').Page, name:string) => {
+  const control=page.getByRole('button',{name,exact:true});
+  if(await control.isVisible()){await control.click();return;}
+  await page.getByRole('button',{name:/Abrir navegación|Open navigation/}).click();
+  const dialog=page.getByRole('dialog');
+  await dialog.getByRole('button',{name,exact:true}).click();
+  await page.screenshot({path:'test-results/mobile-appearance-menu.png'});
+  await dialog.getByRole('button',{name:/Cerrar diálogo|Close dialog/}).click();
+};
 
 test('mobile onboarding, learning, review, navigation, search and context', async({page})=>{
   await page.goto('http://127.0.0.1:5173');
@@ -64,7 +73,7 @@ test('narrow layouts, local commands, tables, CSV, dialogs and language switchin
   const download=page.waitForEvent('download');
   await page.getByRole('button',{name:'Exportar CSV',exact:true}).click();
   expect((await download).suggestedFilename()).toBe('synthetic-forward-dates.csv');
-  await page.getByRole('button',{name:'Cambiar a modo oscuro'}).click();
+  await changeTheme(page,'Cambiar a modo oscuro');
   await page.getByRole('combobox',{name:'Idioma',exact:true}).selectOption('en');
   for(const [width,height] of [[320,740],[390,844],[768,1024],[844,390]]){
     await page.setViewportSize({width,height});
@@ -91,11 +100,23 @@ test('logo blends with each theme while original bars remain unfiltered', async(
   const originalSource=await bars.getAttribute('src');
   await expect(logo).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
   await expect(lettering).toHaveCSS('background-color','rgb(15, 20, 25)');
+  const originalBounds=await logo.boundingBox();
+  const originalBarsBounds=await bars.boundingBox();
+  for(const button of await page.locator('.topbar button:visible').all()){
+    const box=await button.boundingBox(),icon=await button.locator('svg').boundingBox();
+    if(box&&icon){
+      expect(Math.abs(box.x+box.width/2-icon.x-icon.width/2)).toBeLessThan(1);
+      expect(Math.abs(box.y+box.height/2-icon.y-icon.height/2)).toBeLessThan(1);
+    }
+  }
   await page.screenshot({path:'test-results/desktop-integrated-logo-light.png'});
   await page.getByRole('button',{name:'Cambiar a modo oscuro'}).click();
   await expect(lettering).toHaveCSS('background-color','rgb(232, 237, 242)');
   await expect(bars).toHaveCSS('filter','none');
   expect(await bars.getAttribute('src')).toBe(originalSource);
+  expect(await logo.boundingBox()).toEqual(originalBounds);
+  expect(await bars.boundingBox()).toEqual(originalBarsBounds);
+  await expect(lettering).toHaveCSS('clip-path',/evenodd/);
   await page.waitForTimeout(150);
   await page.screenshot({path:'test-results/desktop-canonical-logo-dark.png'});
   await page.setViewportSize({width:390,height:844});
@@ -103,7 +124,9 @@ test('logo blends with each theme while original bars remain unfiltered', async(
   await expect(compactLogo).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
   await expect(compactLogo.locator('.pace-mark-lettering')).toHaveCSS('background-color','rgb(232, 237, 242)');
   await page.screenshot({path:'test-results/mobile-integrated-logo-dark.png'});
-  await page.getByRole('button',{name:'Cambiar a modo claro'}).click();
+  const compactBounds=await compactLogo.boundingBox();
+  await changeTheme(page,'Cambiar a modo claro');
+  expect(await compactLogo.boundingBox()).toEqual(compactBounds);
   await expect(compactLogo.locator('.pace-mark-lettering')).toHaveCSS('background-color','rgb(15, 20, 25)');
   await expect(compactLogo.locator('.pace-mark-bars')).toHaveCSS('filter','none');
   await page.waitForTimeout(150);
