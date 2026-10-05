@@ -6,6 +6,43 @@ import {emptyProgress} from '../src/lib/learning';
 import {STORAGE_KEY} from '../src/lib/progress';
 test.use({viewport:{width:1440,height:1000}});
 test.beforeEach(async({page})=>{await page.addInitScript(()=>{if(!localStorage.getItem('pace.profile.v1'))localStorage.setItem('pace.profile.v1',JSON.stringify({version:1,name:'',role:'',goal:'',onboardingComplete:true}));});});
+
+test('wide workspace alignment, reference focus and local interview preview',async({page})=>{
+await page.setViewportSize({width:2560,height:1440});
+await page.goto('http://127.0.0.1:5173');
+for(const theme of ['light','dark']){
+if(theme==='dark')await page.getByRole('button',{name:'Cambiar a modo oscuro'}).click();
+await page.getByRole('button',{name:'Laboratorio de práctica',exact:true}).click();
+const caption=await page.locator('main .table-caption').first().boundingBox();
+const table=await page.locator('main .table-scroll').first().boundingBox();
+expect(caption).not.toBeNull();expect(table).not.toBeNull();
+expect(caption!.x).toBeCloseTo(table!.x,1);expect(caption!.width).toBeCloseTo(table!.width,1);
+await page.screenshot({path:`test-results/aligned-wide-practice-${theme}.png`});
+await page.getByRole('button',{name:'Hoy',exact:true}).click();
+await page.getByRole('button',{name:'Continuar sesión',exact:true}).click();
+const warning=await page.locator('main>.callout').boundingBox();
+const example=await page.locator('main>.worked').boundingBox();
+expect(warning!.x).toBeCloseTo(example!.x,1);expect(warning!.width).toBeCloseTo(example!.width,1);
+await page.screenshot({path:`test-results/aligned-wide-lesson-${theme}.png`});
+await page.getByRole('button',{name:'Hoja de fórmulas',exact:true}).click();
+const search=page.locator('.modal-search input');await search.focus();
+await expect(page.locator('.modal-search')).toHaveCSS('outline-style','solid');
+await expect(search).toHaveCSS('outline-style','none');
+await page.screenshot({path:`test-results/aligned-formulas-${theme}.png`});
+await page.getByRole('button',{name:'Cerrar diálogo'}).click();
+}
+await page.getByRole('button',{name:'Laboratorio de entrevistas',exact:true}).click();
+await expect(page.getByRole('status')).toContainText('Habilitado temporalmente');
+expect(await page.locator('main form.question').count()).toBeGreaterThan(0);
+const progress=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)!),STORAGE_KEY);
+expect(progress.completed).toEqual([]);expect(progress.capstone).toBeFalsy();
+const firstQuestion=page.locator('main form.question').first();
+await expect(firstQuestion.getByRole('status')).toHaveCount(0);
+await firstQuestion.getByPlaceholder('Escribe tu respuesta').fill('80');
+await firstQuestion.getByRole('button',{name:'Comprobar respuesta'}).click();
+await expect(firstQuestion.getByRole('status')).toContainText('Correcto.');
+await page.screenshot({path:'test-results/interview-local-preview.png'});
+});
 test('desktop lesson loop, review, commands, persistence, CSV and screenshots',async({page})=>{
 await page.goto('http://127.0.0.1:5173');
 await expect(page.getByRole('heading',{name:es('Build the judgment behind the numbers.')})).toBeVisible();

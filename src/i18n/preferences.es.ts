@@ -1,4 +1,6 @@
 export const preferencesCopy: Record<string, string> = {
+  'Interview preview': 'Vista de prueba de entrevistas',
+  'Temporarily unlocked for local testing. Your lessons and capstone remain unchanged.': 'Habilitado temporalmente para pruebas locales. Tus lecciones y el caso integrador conservan su estado.',
   'Navigation': 'Navegación', 'Context': 'Contexto', 'Open navigation': 'Abrir navegación', 'Open search': 'Abrir búsqueda', 'Open context panel': 'Abrir contexto',
   'Display preferences': 'Preferencias de visualización',
   'Switch to dark mode': 'Cambiar a modo oscuro',
