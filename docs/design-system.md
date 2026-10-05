@@ -1,6 +1,6 @@
 # PACE — White Gold Dark Accent
 
-The canonical logo remains public/brand/pace-logo.png. Its wordmark geometry is preserved. The asset supplies the lettering alpha mask, colored with the current primary text token. The bar region is excluded from that mask so theme-dependent lettering does not overlap the original analytical bars. Those bars are displayed unchanged in color through a clip covering their original coordinates. Explicit logo dimensions prevent theme changes from shifting its geometry. The mark has no surrounding background, border, padding or shadow; it blends into both themes without changing the image file.
+The canonical logo remains public/brand/pace-logo.png. Its wordmark geometry is preserved. The asset supplies the lettering alpha mask, colored with the current primary text token. The bars' stepped footprint is excluded from that mask so theme-dependent lettering does not overlap the original analytical bars. Those bars are displayed unchanged in color through the same stepped footprint. A rectangular bar crop would also include the A's left stroke and leave a white fragment in light mode. Explicit logo dimensions prevent theme changes from shifting its geometry. The mark has no surrounding background, border, padding or shadow; it blends into both themes without changing the image file.
 
 ## Semantic tokens
 

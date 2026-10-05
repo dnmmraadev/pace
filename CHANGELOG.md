@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Preserve the complete A in light mode by clipping original analytical bars to their stepped footprint rather than a rectangular region that overlaps the wordmark.
 - Align all main-workspace sections to one content column, including table captions and lesson warnings; use a single focus outline around reference search.
 - Restore the Interview Lab unlock requirement after the temporary trial: complete every core lesson and submit the capstone. Existing progress and interview attempts remain unchanged.
 - Consistent header icon alignment and logo dimensions across themes; adjacent theme and ES/ENG language buttons in the top toolbar.

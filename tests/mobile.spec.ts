@@ -100,6 +100,13 @@ test('logo blends with each theme while original bars remain unfiltered', async(
   const originalSource=await bars.getAttribute('src');
   await expect(logo).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
   await expect(lettering).toHaveCSS('background-color','rgb(15, 20, 25)');
+  await expect(bars).toHaveCSS('clip-path',/^polygon\(/);
+  // The old rectangular bar overlay covered this point on the A's left stroke.
+  expect(await logo.evaluate(element=>{
+    const box=element.getBoundingClientRect();
+    return document.elementFromPoint(box.x+box.width*.348,box.y+box.height*.56)?.classList.contains('pace-mark-lettering');
+  })).toBe(true);
+  await logo.screenshot({path:'test-results/logo-detail-light.png'});
   const originalBounds=await logo.boundingBox();
   const originalBarsBounds=await bars.boundingBox();
   for(const button of await page.locator('.topbar button:visible').all()){
@@ -113,6 +120,7 @@ test('logo blends with each theme while original bars remain unfiltered', async(
   await page.screenshot({path:'test-results/desktop-integrated-logo-light.png'});
   await page.getByRole('button',{name:'Cambiar a modo oscuro'}).click();
   await expect(lettering).toHaveCSS('background-color','rgb(232, 237, 242)');
+  await logo.screenshot({path:'test-results/logo-detail-dark.png'});
   await expect(bars).toHaveCSS('filter','none');
   expect(await bars.getAttribute('src')).toBe(originalSource);
   expect(await logo.boundingBox()).toEqual(originalBounds);

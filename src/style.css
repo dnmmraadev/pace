@@ -398,14 +398,15 @@ td:not(.numeric){white-space:normal;overflow-wrap:normal}td:first-child{white-sp
 /* Theme-aware lettering, unchanged brand bars, no tile or surrounding surface. */
 .pace-mark{position:relative;aspect-ratio:2203 / 714;flex-shrink:0;background:transparent;border:0;border-radius:0;padding:0;filter:none}
 .pace-mark-lettering{position:absolute;inset:0;background:var(--text-primary);mask:url("/brand/pace-logo.png") center / contain no-repeat;-webkit-mask:url("/brand/pace-logo.png") center / contain no-repeat}
-.pace-mark-bars{position:absolute;inset:0;width:100%;height:100%;filter:none;clip-path:inset(54% 57% 22% 34.4%)}
+/* Follow the bars' stepped footprint; the broad bounding box intersects the A. */
+.pace-mark-bars{position:absolute;inset:0;width:100%;height:100%;filter:none;clip-path:polygon(40.399455% 53.501401%,40.399455% 60.504202%,37.312756% 60.504202%,37.312756% 66.106443%,34.226055% 66.106443%,34.226055% 78.011204%,42.850658% 78.011204%,42.850658% 53.501401%)}
 
 /* Stable chrome alignment and adjacent toolbar preference controls. */
 .brand{height:104px;padding:8px 16px;gap:4px;align-items:center}
 .brand>span:not(.pace-mark){text-align:center;line-height:1.3;margin:0}
 .brand-logo{height:64.8207px}
 .mobile-brand-logo{height:24.6314px}
-.pace-mark-lettering{clip-path:polygon(evenodd,0% 0%,100% 0%,100% 100%,0% 100%,0% 0%,34.4% 54%,34.4% 78%,43% 78%,43% 54%,34.4% 54%,0% 0%)}
+.pace-mark-lettering{clip-path:polygon(evenodd,0% 0%,100% 0%,100% 100%,0% 100%,0% 0%,40.399455% 53.501401%,40.399455% 60.504202%,37.312756% 60.504202%,37.312756% 66.106443%,34.226055% 66.106443%,34.226055% 78.011204%,42.850658% 78.011204%,42.850658% 53.501401%,40.399455% 53.501401%,0% 0%)}
 .topbar{align-items:center}
 .topbar>div{align-items:center}
 .topbar button{width:36px;height:36px;min-height:36px;flex-shrink:0;padding:0;align-items:center;justify-content:center}
