@@ -1,4 +1,5 @@
 export const preferencesCopy: Record<string, string> = {
+  'Navigation': 'Navegación', 'Context': 'Contexto', 'Open navigation': 'Abrir navegación', 'Open search': 'Abrir búsqueda', 'Open context panel': 'Abrir contexto',
   'Display preferences': 'Preferencias de visualización',
   'Switch to dark mode': 'Cambiar a modo oscuro',
   'Switch to light mode': 'Cambiar a modo claro',

@@ -12,10 +12,10 @@ Content is separate from rendering. Prefer existing components and dependencies.
 | --- | --- |
 | npm test | Learning calculations, mastery/review rules, persistence serialization and localization coverage |
 | npm run build | TypeScript and production renderer bundle |
-| npm run test:browser | Desktop interaction smoke check |
+| npm run test:browser | Desktop and mobile browser interaction checks |
 | npm run desktop:package | Windows x64 portable packaging |
 
-Install the browser once with npx playwright install chromium. The Playwright configuration starts Vite automatically if no existing server is available on port 5173. The existing smoke test covers desktop navigation, calculation feedback, review, local commands and CSV export.
+Install the browser once with npx playwright install chromium. The Playwright configuration starts Vite automatically if no existing server is available on port 5173. The browser checks cover desktop and mobile navigation, calculation feedback, review, local commands, CSV export, onboarding, profile/language/theme persistence and unchanged logo colors. Mobile visual checks include 320px, 390px and 768px widths and a landscape viewport; the desktop regression suite remains in place.
 
 To use installed Chrome instead, set PLAYWRIGHT_CHANNEL=chrome in your shell before npm run test:browser. In PowerShell:
 

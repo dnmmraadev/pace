@@ -1,6 +1,6 @@
 # PACE — White Gold Dark Accent
 
-The canonical logo remains public/brand/pace-logo.png. Its wordmark geometry is preserved. A monochrome CSS treatment makes the existing asset legible on white without drawing a replacement logo.
+The canonical logo remains public/brand/pace-logo.png. Its wordmark geometry is preserved. Its original white and teal colors are retained without filters. A fixed graphite brand background makes the canonical asset readable in both light and dark themes; the image file is unchanged.
 
 ## Semantic tokens
 
@@ -30,6 +30,6 @@ White dominates the central workspace. Near-white supports the rails and command
 
 Use compact sans-serif instructions and selective monospace readouts, formulas and commands. Numerical data uses tabular numerals and aligned columns. Keep thin separators and 4–6px radii, with a restrained dialog shadow. Table headers may wrap; dates and numeric values stay on one line. Long formulas wrap in contextual panels.
 
-Preserve the three-part desktop workstation and collapsible right context panel. No mobile navigation is introduced. Buttons and fields have short functional transitions; reduced-motion settings disable them. Keyboard focus remains visible, including the command composer and scrollable tables.
+Preserve the three-part desktop workstation and collapsible right context panel. At widths of 1000px and below, navigation and contextual references open as native modal dialogs. Both reuse the desktop content; main tables scroll within their own boundaries. Touch targets, forms, stacked exercise layouts and dynamic viewport height support phone/tablet study. Buttons and fields have short functional transitions; reduced-motion settings disable them. Keyboard focus remains visible, including the command composer and scrollable tables.
 
 See [localization](localization.md) for terminology and display-value compatibility rules.

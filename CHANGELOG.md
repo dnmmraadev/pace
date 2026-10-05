@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Responsive phone/tablet browser workspace with navigation and context dialogs, scrollable analytical tables and touch-friendly study controls.
+- Canonical PACE logo colors preserved across light/dark themes; fixed brand background keeps the original mark readable.
+
 ## 0.2.0 — 2026-10-03
 
 - Publish the current feature baseline without a prerelease suffix; future releases use plain MAJOR.MINOR.PATCH numbers.
