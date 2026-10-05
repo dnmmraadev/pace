@@ -80,23 +80,34 @@ test('narrow layouts, local commands, tables, CSV, dialogs and language switchin
   await page.getByRole('dialog').getByRole('button',{name:'Close dialog'}).click();
 });
 
-test('canonical logo renders identically in both themes and desktop remains available', async({page})=>{
+test('logo blends with each theme while original bars remain unfiltered', async({page})=>{
   await page.addInitScript(key=>localStorage.setItem(key,JSON.stringify({version:1,name:'',role:'',goal:'',onboardingComplete:true})),PROFILE_KEY);
   await page.setViewportSize({width:1440,height:1000});
   await page.goto('http://127.0.0.1:5173');
   const logo=page.locator('.app>.left-rail .brand-logo');
   await expect(logo).toBeVisible();
-  const sample=async(element:typeof logo)=>{const box=(await element.boundingBox())!;return page.screenshot({clip:{x:box.x+5,y:box.y+5,width:box.width-10,height:box.height-10}});};
-  const original=await sample(logo);
+  const lettering=logo.locator('.pace-mark-lettering');
+  const bars=logo.locator('.pace-mark-bars');
+  const originalSource=await bars.getAttribute('src');
+  await expect(logo).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
+  await expect(lettering).toHaveCSS('background-color','rgb(15, 20, 25)');
+  await page.screenshot({path:'test-results/desktop-integrated-logo-light.png'});
   await page.getByRole('button',{name:'Cambiar a modo oscuro'}).click();
-  await expect(logo).toHaveCSS('filter','none');
-  expect((await sample(logo)).equals(original)).toBeTruthy();
+  await expect(lettering).toHaveCSS('background-color','rgb(232, 237, 242)');
+  await expect(bars).toHaveCSS('filter','none');
+  expect(await bars.getAttribute('src')).toBe(originalSource);
+  await page.waitForTimeout(150);
   await page.screenshot({path:'test-results/desktop-canonical-logo-dark.png'});
   await page.setViewportSize({width:390,height:844});
   const compactLogo=page.locator('.mobile-brand-logo');
-  const dark=await sample(compactLogo);
+  await expect(compactLogo).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
+  await expect(compactLogo.locator('.pace-mark-lettering')).toHaveCSS('background-color','rgb(232, 237, 242)');
+  await page.screenshot({path:'test-results/mobile-integrated-logo-dark.png'});
   await page.getByRole('button',{name:'Cambiar a modo claro'}).click();
-  expect((await sample(compactLogo)).equals(dark)).toBeTruthy();
+  await expect(compactLogo.locator('.pace-mark-lettering')).toHaveCSS('background-color','rgb(15, 20, 25)');
+  await expect(compactLogo.locator('.pace-mark-bars')).toHaveCSS('filter','none');
+  await page.waitForTimeout(150);
+  await page.screenshot({path:'test-results/mobile-integrated-logo-light.png'});
 });
 
 test('mobile curriculum, progress, capstone, interview and Excel remain reachable',async({page})=>{

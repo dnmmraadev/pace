@@ -1,6 +1,6 @@
 # PACE — White Gold Dark Accent
 
-The canonical logo remains public/brand/pace-logo.png. Its wordmark geometry is preserved. Its original white and teal colors are retained without filters. A fixed graphite brand background makes the canonical asset readable in both light and dark themes; the image file is unchanged.
+The canonical logo remains public/brand/pace-logo.png. Its wordmark geometry is preserved. The asset supplies the lettering alpha mask, colored with the current primary text token. The original analytical bars are displayed unchanged in color through a clip covering their original coordinates. The mark has no surrounding background, border, padding or shadow; it blends into both themes without changing its geometry or the image file.
 
 ## Semantic tokens
 

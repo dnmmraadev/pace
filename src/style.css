@@ -302,7 +302,7 @@ td:not(.numeric){white-space:normal;overflow-wrap:normal}td:first-child{white-sp
 @media(min-width:1400px){.topbar .synthetic-tag{display:inline}}
 
 /* Keep the canonical brand asset unchanged in every theme. */
-.brand-logo{filter:none;background:var(--brand-background);padding:6px 10px;border-radius:var(--radius-control);width:200px;margin:0}
+.brand-logo{width:200px;margin:0}
 .mobile-only{display:none}
 .app{height:100dvh}
 .navigation-dialog .modal-body,.context-dialog .modal-body{padding:0}
@@ -390,6 +390,11 @@ td:not(.numeric){white-space:normal;overflow-wrap:normal}td:first-child{white-sp
   main{padding:18px 14px 26px}
 }
 
-.mobile-brand-logo{width:66px;height:auto;background:var(--brand-background);padding:4px 6px;border-radius:var(--radius-control);filter:none}
+.mobile-brand-logo{width:76px;height:auto}
 @media(max-width:1000px){.topbar>div:first-child>span:last-child{display:none}.navigation-dialog .brand{display:flex;height:80px}}
 @media(max-width:360px){.topbar .mobile-search{display:none}}
+
+/* Theme-aware lettering, unchanged brand bars, no tile or surrounding surface. */
+.pace-mark{position:relative;aspect-ratio:2203 / 714;flex-shrink:0;background:transparent;border:0;border-radius:0;padding:0;filter:none}
+.pace-mark-lettering{position:absolute;inset:0;background:var(--text-primary);mask:url("/brand/pace-logo.png") center / contain no-repeat;-webkit-mask:url("/brand/pace-logo.png") center / contain no-repeat}
+.pace-mark-bars{position:absolute;inset:0;width:100%;height:100%;filter:none;clip-path:inset(54% 57% 22% 34.4%)}

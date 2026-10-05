@@ -3,7 +3,7 @@
 ## Unreleased
 
 - Responsive phone/tablet browser workspace with navigation and context dialogs, scrollable analytical tables and touch-friendly study controls.
-- Canonical PACE logo colors preserved across light/dark themes; fixed brand background keeps the original mark readable.
+- PACE logo blends into each theme without a surrounding tile: lettering follows the text token and analytical bars retain their original colors.
 
 ## 0.2.0 — 2026-10-03
 
