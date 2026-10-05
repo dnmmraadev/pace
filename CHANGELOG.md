@@ -3,7 +3,7 @@
 ## Unreleased
 
 - Align all main-workspace sections to one content column, including table captions and lesson warnings; use a single focus outline around reference search.
-- Temporarily enable interview preview in development and compiled builds without changing completion or capstone records.
+- Restore the Interview Lab unlock requirement after the temporary trial: complete every core lesson and submit the capstone. Existing progress and interview attempts remain unchanged.
 - Consistent header icon alignment and logo dimensions across themes; adjacent theme and ES/ENG language buttons in the top toolbar.
 - Responsive phone/tablet browser workspace with navigation and context dialogs, scrollable analytical tables and touch-friendly study controls.
 - PACE logo blends into each theme without a surrounding tile: lettering follows the text token and analytical bars retain their original colors.

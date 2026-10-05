@@ -34,7 +34,7 @@ Adjacent buttons in the top toolbar switch light/dark appearance and Spanish/Eng
 
 All direct workspace sections share centered inline margins, including warnings and dataset captions. Their vertical spacing remains component-specific. Reference search draws its focus ring around the entire search control, including its icon.
 
-The Interview Lab is temporarily exposed for testing in both development and compiled builds, with an explicit preview notice. The original curriculum/capstone condition is retained for restoring normal access after the trial. The preview does not fabricate completed lessons or a capstone submission.
+The Interview Lab requires completion of every core lesson and submission of the independent capstone. The temporary testing override has been removed from both development and compiled builds. Existing learning records and interview attempts are preserved.
 
 Preserve the three-part desktop workstation and collapsible right context panel. At widths of 1000px and below, navigation and contextual references open as native modal dialogs. Both reuse the desktop content; main tables scroll within their own boundaries. Touch targets, forms, stacked exercise layouts and dynamic viewport height support phone/tablet study. Buttons and fields have short functional transitions; reduced-motion settings disable them. Keyboard focus remains visible, including the command composer and scrollable tables.
 

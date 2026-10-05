@@ -7,7 +7,26 @@ import {STORAGE_KEY} from '../src/lib/progress';
 test.use({viewport:{width:1440,height:1000}});
 test.beforeEach(async({page})=>{await page.addInitScript(()=>{if(!localStorage.getItem('pace.profile.v1'))localStorage.setItem('pace.profile.v1',JSON.stringify({version:1,name:'',role:'',goal:'',onboardingComplete:true}));});});
 
-test('wide workspace alignment, reference focus and interview preview',async({page})=>{
+test('interviews require both completed lessons and capstone without changing saved attempts',async({page})=>{
+await page.goto('http://127.0.0.1:5173');
+const capstone={answers:{},insights:'Saved report',submitted:123,score:0};
+const attempt={questionId:'interview-diag-occ',topic:'inventory',answer:'80',correct:true,at:123};
+for(const [completed,submission,unlocked] of [
+  [[],capstone,false],
+  [lessons.map(l=>l.id),null,false],
+  [lessons.map(l=>l.id),capstone,true],
+] as const){
+const progress={...emptyProgress(),completed:[...completed],attempts:[attempt],capstone:submission};
+await page.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:STORAGE_KEY,value:progress});
+await page.reload();
+await page.getByRole('button',{name:'Laboratorio de entrevistas',exact:true}).click();
+await expect(page.locator('main form.question')).toHaveCount(unlocked?8:0);
+if(!unlocked)await expect(page.locator('main .empty-state')).toBeVisible();
+expect(await page.evaluate(key=>JSON.parse(localStorage.getItem(key)!),STORAGE_KEY)).toEqual(JSON.parse(JSON.stringify(progress)));
+}
+});
+
+test('wide workspace alignment, reference focus and interview lock',async({page})=>{
 await page.setViewportSize({width:2560,height:1440});
 await page.goto('http://127.0.0.1:5173');
 for(const theme of ['light','dark']){
@@ -32,16 +51,11 @@ await page.screenshot({path:`test-results/aligned-formulas-${theme}.png`});
 await page.getByRole('button',{name:'Cerrar diálogo'}).click();
 }
 await page.getByRole('button',{name:'Laboratorio de entrevistas',exact:true}).click();
-await expect(page.getByRole('status')).toContainText('Habilitado temporalmente');
-expect(await page.locator('main form.question').count()).toBeGreaterThan(0);
+await expect(page.locator('main .empty-state')).toBeVisible();
+await expect(page.locator('main form.question')).toHaveCount(0);
 const progress=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)!),STORAGE_KEY);
 expect(progress.completed).toEqual([]);expect(progress.capstone).toBeFalsy();
-const firstQuestion=page.locator('main form.question').first();
-await expect(firstQuestion.getByRole('status')).toHaveCount(0);
-await firstQuestion.getByPlaceholder('Escribe tu respuesta').fill('80');
-await firstQuestion.getByRole('button',{name:'Comprobar respuesta'}).click();
-await expect(firstQuestion.getByRole('status')).toContainText('Correcto.');
-await page.screenshot({path:'test-results/interview-local-preview.png'});
+await page.screenshot({path:'test-results/interview-locked.png'});
 });
 test('desktop lesson loop, review, commands, persistence, CSV and screenshots',async({page})=>{
 await page.goto('http://127.0.0.1:5173');
