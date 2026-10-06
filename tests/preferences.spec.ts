@@ -28,6 +28,9 @@ test('theme and language switch without losing an active answer or saved progres
   await expect(page.getByRole('button', { name: 'Continue Session', exact: true })).toBeVisible();
   await page.screenshot({ path: 'test-results/preferences-dark-english.png' });
   await page.getByRole('button', { name: 'Continue Session', exact: true }).click();
+  await expect(page.getByRole('heading',{name:'Study guide',exact:true})).toBeVisible();
+  await expect(page.locator('.worked-steps li')).toHaveCount(3);
+  await expect(page.locator('.study-reflection')).toContainText('This reflection is not graded');
   await page.getByRole('button', { name: 'Start practice', exact: true }).click();
   await page.getByPlaceholder('Enter your answer').fill('75');
   await page.getByRole('button', { name: 'Switch to Spanish', exact: true }).click();

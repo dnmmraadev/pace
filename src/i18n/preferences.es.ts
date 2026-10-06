@@ -1,4 +1,11 @@
 export const preferencesCopy: Record<string, string> = {
+  'IES — Learning and study design': 'IES — Diseño del aprendizaje y el estudio',
+  'SiteMinder — Revenue Management strategies': 'SiteMinder — Estrategias de Revenue Management',
+  'Learning objective': 'Objetivo de aprendizaje', 'Study guide': 'Material de estudio', 'Worked example': 'Ejemplo resuelto',
+  'Synthetic training example · 900-room resort · USD': 'Ejemplo sintético de práctica · resort de 900 habitaciones · USD',
+  'Reasoning step by step': 'Razonamiento paso a paso', 'Interpret the result': 'Cómo interpretar el resultado',
+  'A reasoned action': 'Una acción fundamentada', 'Before practice': 'Antes de la práctica', 'Study references': 'Referencias de estudio',
+  'Explain it in your own words. This reflection is not graded. Reading does not count as demonstrated mastery.': 'Explícalo con tus palabras. Esta reflexión no se califica. Leer no cuenta como dominio demostrado.',
   'Switch to English': 'Cambiar a inglés', 'Switch to Spanish': 'Cambiar a español',
   'Navigation': 'Navegación', 'Context': 'Contexto', 'Open navigation': 'Abrir navegación', 'Open search': 'Abrir búsqueda', 'Open context panel': 'Abrir contexto',
   'Display preferences': 'Preferencias de visualización',

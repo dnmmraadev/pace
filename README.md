@@ -8,6 +8,8 @@ PACE uses short lessons, retrieval questions, calculations, decisions and spaced
 
 ![PACE desktop workspace](docs/assets/workspace.png)
 
+All 17 lessons now include a bilingual study objective, focused reading, worked reasoning, interpretation, a commercial action and an ungraded reflection before independent practice. See [the applied research report](docs/research-revenue-learning.es.md) for sources, design decisions and limitations. Study guides are editable in src/data/studyGuides.ts; existing progress and question identifiers remain compatible.
+
 ## What you can do
 
 - Follow 17 lesson loops, with detailed foundations in mental models, metrics, booking behavior and forecasting.

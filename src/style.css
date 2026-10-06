@@ -53,6 +53,24 @@ small{font-size:12px}
 main{overflow:auto;flex:1;padding:36px 40px 44px;scrollbar-gutter:stable}
 main{position:relative}
 .work-area main>*{max-width:1120px;margin-inline:auto}
+.study-objective{padding:14px 18px;border-left:2px solid var(--accent-primary);background:var(--surface-secondary);margin-block:20px}
+.study-objective p{margin:6px 0;font-size:15px}
+.study-material{padding-block:12px 20px;border-top:1px solid var(--border-subtle)}
+.study-material>section{margin-block:22px}
+.study-material p,.expanded-example p,.worked-steps,.worked-reading dd{font-size:15px;line-height:1.75}
+.study-data-note{font-size:12px!important;color:var(--text-muted)}
+.expanded-example h4{font-size:14px;margin:24px 0 12px}
+.worked-steps{padding-left:28px;margin:12px 0 24px;color:var(--text-secondary)}
+.worked-steps li{padding:8px 0 8px 6px}
+.worked-steps li::marker{font-family:var(--font-mono);color:var(--accent-secondary)}
+.worked-reading{margin:20px 0}
+.worked-reading>div{border-top:1px solid var(--border-subtle);padding:14px 0}
+.worked-reading dt{font-weight:600;font-size:14px}
+.worked-reading dd{margin:6px 0 0;color:var(--text-secondary)}
+.study-reflection{padding-block:16px;border-top:1px solid var(--border-subtle)}
+.study-reflection p{font-size:15px}
+.study-reflection small{display:block;color:var(--text-secondary);line-height:1.6}
+.study-references{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;font-size:12px;color:var(--text-muted)}
 .section-title{margin-bottom:28px}
 .section-title p{max-width:760px;font-size:15px}
 .session-panel{background:var(--color-surface);border:1px solid var(--color-border);border-top:2px solid var(--color-accent);border-radius:var(--radius-panel);padding:24px}

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Expand all 17 lessons with bilingual study objectives, topic-specific reading, stepwise worked examples, interpretation, actions, ungraded reflection and references before independent practice.
+- Document Revenue Management and learning-design research; preserve questions, formulas, progress identifiers, mastery and review behavior. Session time estimate is now approximately 12 minutes.
 - Preserve the complete A in light mode by clipping original analytical bars to their stepped footprint rather than a rectangular region that overlaps the wordmark.
 - Align all main-workspace sections to one content column, including table captions and lesson warnings; use a single focus outline around reference search.
 - Restore the Interview Lab unlock requirement after the temporary trial: complete every core lesson and submit the capstone. Existing progress and interview attempts remain unchanged.

@@ -1,3 +1,4 @@
+import {studyGuides,studySources} from '../src/data/studyGuides';
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {emptyProgress,record,mastery,demonstrated,grade,csv} from '../src/lib/learning';
@@ -12,3 +13,18 @@ test('progress persists including rationale, capstone, review dates and lesson c
 test('CSV preserves quotes, commas, zero and headers',()=>{assert.equal(csv([{name:'Room, "A"',value:0}]),'"name","value"\r\n"Room, ""A""","0"');});
 test('every lesson has the complete learning loop with unique question identifiers',()=>{const ids=new Set();for(const l of lessons){assert.ok(l.concept&&l.formula&&l.example&&l.mistake);assert.equal(l.questions.length,4);for(const q of [...l.questions,l.scenario]){assert.ok(!ids.has(q.id));ids.add(q.id);assert.ok(q.explanation);if(q.options)assert.ok(q.options.includes(String(q.answer)));}}for(let m=1;m<=10;m++)assert.ok(lessons.some(l=>l.module===m));});
 test('capstone source totals reconcile to keyed calculations',()=>{assert.equal(channelMix.reduce((s,r)=>s+r.rooms,0),720);assert.equal(channelMix.reduce((s,r)=>s+r.revenue,0),192000);assert.equal(capstoneChecks.find(q=>q.id==='cap-net')?.answer,84000-15120);});
+
+test('every lesson has substantive bilingual study notes and worked reasoning',()=>{
+  assert.deepEqual(Object.keys(studyGuides).sort(),lessons.map(l=>l.id).sort());
+  for(const lesson of lessons){
+    const guide=studyGuides[lesson.id];
+    assert.equal(guide.sections.length,2);
+    assert.equal(guide.steps.length,3);
+    for(const language of ['es','en'] as const){
+      for(const section of guide.sections){assert.ok(section.title[language].trim());assert.ok(section.body[language].split(/\s+/).length>=30);}
+      for(const copy of [guide.objective,...guide.steps,guide.interpretation,guide.action,guide.reflection])assert.ok(copy[language].trim());
+    }
+    assert.ok(guide.sources.length);
+    guide.sources.forEach(id=>assert.ok(studySources[id].url.startsWith('https://')));
+  }
+});

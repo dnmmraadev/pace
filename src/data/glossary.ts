@@ -55,6 +55,8 @@ export const glossary:Record<string,string>={
 'Recommendation':'A proposed action with rationale, responsibility and follow-up.'
 };
 export const sources=[
+['IES — Learning and study design','https://ies.ed.gov/ncee/wwc/PracticeGuide/1'],
+['SiteMinder — Revenue Management strategies','https://www.siteminder.com/r/hotel-revenue-management/'],
 ['EHL — Hotel STAR reports and performance indices','https://insights.ehl.edu/hotel-industry-performance'],
 ['HSMAI — Revenue Management curriculum','https://academy.hsmai.org/revenue/'],
 ['SiteMinder — RevPAR calculation','https://www.siteminder.com/r/calculate-revpar/'],

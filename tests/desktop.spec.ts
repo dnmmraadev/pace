@@ -119,6 +119,12 @@ for(const l of lessons){
   await page.getByRole('dialog').getByRole('button').filter({has:page.getByText(es(l.title),{exact:true})}).click();
   await expect(page.getByRole('heading',{name:es(l.title),exact:true})).toBeVisible();
   await expect(page.locator('.prose')).toContainText(es(l.concept));
+  await expect(page.getByRole('region',{name:'Objetivo de aprendizaje'})).toBeVisible();
+  await expect(page.locator('.study-material>section')).toHaveCount(2);
+  await expect(page.locator('.worked-steps li')).toHaveCount(3);
+  await expect(page.locator('.worked-reading dt')).toHaveCount(2);
+  await expect(page.locator('.study-reflection')).toContainText('Esta reflexión no se califica');
+  await expect(page.locator('main form.question')).toHaveCount(0);
   await capture('lesson-'+l.id);
 }
 await page.setViewportSize({width:1280,height:800});await capture('laptop');

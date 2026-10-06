@@ -3,7 +3,7 @@ export type Lesson={id:string;module:number;title:string;minutes:number;concept:
 export const modules=['Diagnostic','Revenue Management Mental Model','Core Hotel Metrics','Booking Behavior','Demand and Forecasting','Pricing, Yield and Inventory','Segmentation and Distribution','Benchmarking and Market Performance','Revenue Analyst Excel Skills','Daily Revenue Analyst Workflow','Revenue Meeting','Capstone','Interview Lab'];
 const q=(id:string,prompt:string,answer:number|string,explanation:string,options?:string[],unit?:string):Question=>({id,prompt,answer,explanation,options,unit,tolerance:0.05});
 const choose=(id:string,prompt:string,answer:string,alternatives:string[],explanation:string)=>q(id,prompt,answer,explanation,[answer,...alternatives]);
-const lesson=(id:string,module:number,title:string,concept:string,formula:string,example:string,mistake:string,questions:Question[],scenario:Question,terms:string[]):Lesson=>({id,module,title,concept,formula,example,mistake,questions,scenario,terms,minutes:8});
+const lesson=(id:string,module:number,title:string,concept:string,formula:string,example:string,mistake:string,questions:Question[],scenario:Question,terms:string[]):Lesson=>({id,module,title,concept,formula,example,mistake,questions,scenario,terms,minutes:12});
 export const lessons:Lesson[]=[
 lesson('inventory',1,'Think in room nights',
 'A room night is perishable: an unsold room tonight cannot be stored for tomorrow. A 900-room resort has fixed nightly capacity while demand changes with dates, events and guest needs. Revenue management matches price and availability to expected demand. Operations knowledge helps you recognize whether an apparent demand problem is actually a closed rate, room outage or reservation error.',
