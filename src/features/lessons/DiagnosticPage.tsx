@@ -1,8 +1,9 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { type Question } from '../../data/curriculum';
-import { diagnostic } from '../../data/scenarios';
+import { diagnostic } from '../../data/diagnostic';
 import { type Progress } from '../../domain/learning';
 import { es } from '../../i18n/es';
+import { usePreferences } from '../../shared/storage/preferences';
 
 import { SectionTitle } from '../../shared/ui/SectionTitle';
 import { QuestionForm } from './QuestionForm';
@@ -14,24 +15,21 @@ type Props = {
   openLesson: (id: string) => void;
 };
 export function DiagnosticPage({ submit, setP, setModal, openLesson }: Props) {
+  const { language } = usePreferences();
   return (
     <>
       <SectionTitle
         eyebrow={es('MODULE 00 · OPTIONAL')}
         title={es('Start with what you know')}
-        description={es(
-          'Five quick checks. These guide acceleration; they never block access or establish mastery by themselves.',
-        )}
+        description={
+          language === 'es'
+            ? 'Ocho preguntas breves sobre métricas, reservas, decisiones y datos. Recomiendan un punto de inicio; no bloquean contenido ni demuestran dominio.'
+            : 'Eight short checks on metrics, bookings, decisions and data. They recommend a starting point; they never block content or establish mastery.'
+        }
       />
       {es(
-        diagnostic.map((q, i) => (
-          <QuestionForm
-            key={q.id}
-            q={q}
-            onAnswer={(v) =>
-              submit(q, v, ['occupancy', 'adr', 'revpar', 'pickup', 'forecast-rooms'][i])
-            }
-          />
+        diagnostic.map((q) => (
+          <QuestionForm key={q.id} q={q} onAnswer={(v) => submit(q, v, q.topic)} />
         )),
       )}
       <button

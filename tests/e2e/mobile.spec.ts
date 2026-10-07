@@ -97,7 +97,8 @@ test('narrow layouts, local commands, tables, CSV, dialogs and language switchin
   await page.goto('http://127.0.0.1:5173');
   await page.getByLabel('Comando local').fill('/practice');
   await page.getByLabel('Comando local').press('Enter');
-  const table = page.locator('.table-scroll').first();
+  await page.getByText('Tablas y ejemplos de referencia', { exact: true }).click();
+  const table = page.locator('#canonical-practice .table-scroll').first();
   expect(await table.evaluate((el) => el.scrollWidth > el.clientWidth)).toBeTruthy();
   await table.evaluate((el) => (el.scrollLeft = el.scrollWidth));
   expect(await table.evaluate((el) => el.scrollLeft)).toBeGreaterThan(0);
@@ -236,8 +237,9 @@ test('mobile curriculum, progress, capstone, interview and Excel remain reachabl
     await noOverflow(page);
     if (name === 'Progreso') await page.screenshot({ path: 'test-results/mobile-progress.png' });
   }
+  await page.getByText('Tablas y ejemplos de referencia', { exact: true }).click();
   await page.getByRole('tab', { name: 'Análisis en Excel', exact: true }).click();
-  await page.locator('main').getByRole('combobox').selectOption('Direct');
+  await page.locator('#canonical-practice').getByRole('combobox').selectOption('Direct');
   await page.getByLabel('Crear resumen por canal tipo tabla dinámica').check();
   await noOverflow(page);
   await page.screenshot({ path: 'test-results/mobile-excel.png' });

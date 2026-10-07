@@ -15,7 +15,12 @@ test('native isolation, keyboard navigation and progress survive an Electron res
   )
     throw new Error('Unexpected QA profile path');
   const launch = () =>
-    electron.launch({ args: ['.'], env: { ...process.env, PACE_TEST_PROFILE: profileDir } });
+    electron.launch({
+      ...(process.env.PACE_PACKAGED_EXECUTABLE
+        ? { executablePath: process.env.PACE_PACKAGED_EXECUTABLE, args: [] }
+        : { args: ['.'] }),
+      env: { ...process.env, PACE_TEST_PROFILE: profileDir },
+    });
   let app: Awaited<ReturnType<typeof launch>> | undefined;
   const progress = {
     ...emptyProgress(),
@@ -63,6 +68,30 @@ test('native isolation, keyboard navigation and progress survive an Electron res
     ).toEqual(progress);
     await expect(window.locator('html')).toHaveAttribute('data-theme', 'dark');
     await expect(window.locator('html')).toHaveAttribute('lang', 'es-MX');
+    await window.getByLabel('Comando local').fill('/practice');
+    await window.getByLabel('Comando local').press('Enter');
+    const practice = window.locator('#variable-practice');
+    const prompt = await practice.locator('.question-title').innerText();
+    const values = prompt.match(
+      /(\d+) habitaciones, (\d+) fuera de servicio.* durante (\d+) noches/,
+    )!;
+    await practice
+      .getByPlaceholder('Escribe tu respuesta')
+      .fill(String((Number(values[1]) - Number(values[2])) * Number(values[3])));
+    await practice.getByRole('button', { name: 'Comprobar respuesta', exact: true }).click();
+    await expect(practice.getByRole('status')).toContainText('Correcto.');
+    const practiced = await window.evaluate(
+      (key) => JSON.parse(localStorage.getItem(key)!),
+      STORAGE_KEY,
+    );
+    expect(practiced.attempts[0].instance.generatorVersion).toBe(1);
+    expect(practiced.completed).toEqual(progress.completed);
+    await app.close();
+    app = await launch();
+    window = await app.firstWindow();
+    expect(
+      await window.evaluate((key) => JSON.parse(localStorage.getItem(key)!), STORAGE_KEY),
+    ).toEqual(practiced);
   } finally {
     await app?.close();
     // Only remove the exact temporary profile created by this test.

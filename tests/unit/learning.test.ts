@@ -6,6 +6,7 @@ import { studyGuides, studySources } from '../../src/data/studyGuides';
 import { demonstrated, emptyProgress, grade, mastery, record } from '../../src/domain/learning';
 import { csv } from '../../src/shared/export/csv';
 import { loadProgress, saveProgress, STORAGE_KEY } from '../../src/shared/storage/progress';
+import { generatePractice } from '../../src/domain/practice';
 test('numeric grading handles currency, percent, zero, tolerance and invalid values', () => {
   const q = { id: 'n', prompt: 'test', answer: 250, explanation: '' };
   assert.ok(grade(q, '$250.00'));
@@ -14,44 +15,44 @@ test('numeric grading handles currency, percent, zero, tolerance and invalid val
   assert.ok(grade({ ...q, answer: 0 }, '0'));
   assert.ok(grade({ ...q, answer: 55.56, tolerance: 0.05 }, '55.6%'));
 });
-test('one memorized answer cannot confer mastery; five distinct checks can', () => {
+test('memorizing one or all canonical answers cannot confer variable competency', () => {
   let p = emptyProgress();
   const l = lessons[0];
   for (let i = 0; i < 10; i++) p = record(p, l.id, l.questions[0], String(l.questions[0].answer));
-  assert.equal(mastery(p, l.id), 100);
+  assert.equal(mastery(p, l.id), 0);
   assert.equal(demonstrated(p, l.id), false);
   for (const q of [...l.questions, l.scenario]) p = record(p, l.id, q, String(q.answer));
-  assert.ok(demonstrated(p, l.id));
+  assert.equal(demonstrated(p, l.id), false);
+  assert.equal(p.attempts.length, 15);
   assert.equal(p.completed.length, 0);
 });
 test('errors are immediately due; spacing advances only on due review with three distinct correct answers', () => {
   let p = emptyProgress();
   const l = lessons[0];
+  const q = (seed: number) => generatePractice('available-room-nights', seed, l.id);
   const start = 1_000_000;
-  p = record(p, l.id, l.questions[0], 'wrong', start);
+  p = record(p, l.id, q(0), 'wrong', start);
   assert.equal(p.reviews[0].due, start);
-  for (let i = 0; i < 3; i++)
-    p = record(p, l.id, l.questions[i], String(l.questions[i].answer), start + i + 1);
+  for (let i = 0; i < 3; i++) p = record(p, l.id, q(i + 1), String(q(i + 1).answer), start + i + 1);
   assert.equal(p.reviews[0].interval, 1);
   const due = p.reviews[0].due;
   for (let i = 0; i < 3; i++)
-    p = record(p, l.id, l.questions[i], String(l.questions[i].answer), start + 10 + i);
+    p = record(p, l.id, q(i + 4), String(q(i + 4).answer), start + 10 + i);
   assert.equal(p.reviews[0].due, due);
-  for (let i = 0; i < 3; i++)
-    p = record(p, l.id, l.questions[i], String(l.questions[i].answer), due + i);
+  for (let i = 0; i < 3; i++) p = record(p, l.id, q(i + 7), String(q(i + 7).answer), due + i);
   assert.equal(p.reviews[0].interval, 3);
-  p = record(p, l.id, l.questions[0], 'wrong', due + 10);
+  p = record(p, l.id, q(10), 'wrong', due + 10);
   assert.equal(p.reviews[0].interval, 0);
   assert.equal(p.reviews[0].due, due + 10);
 });
-test('latest evidence replaces old errors for mastery without deleting attempt history', () => {
+test('correcting canonical errors retains history without creating generated evidence', () => {
   let p = emptyProgress();
   const l = lessons[0];
   for (const q of [...l.questions, l.scenario]) p = record(p, l.id, q, 'wrong');
   assert.equal(mastery(p, l.id), 0);
   for (const q of l.questions) p = record(p, l.id, q, String(q.answer));
-  assert.equal(mastery(p, l.id), 80);
-  assert.ok(demonstrated(p, l.id));
+  assert.equal(mastery(p, l.id), 0);
+  assert.equal(demonstrated(p, l.id), false);
   assert.equal(p.attempts.length, 9);
 });
 test('progress persists including rationale, capstone, review dates and lesson completion', () => {

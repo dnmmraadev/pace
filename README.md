@@ -4,7 +4,7 @@
 
 A desktop learning workstation for Hotel Revenue Management, from hotel operations knowledge to junior Revenue Analyst practice.
 
-PACE uses short lessons, retrieval questions, calculations, decisions and spaced review. Every hotel dataset is synthetic and models a roughly 900-room resort. It is a training tool, not a production revenue system or professional certification.
+PACE 0.3.0 uses short lessons, variable calculations, commercial decisions and spaced review. All hotel data is synthetic: a roughly 900-room resort is the main environment, with a 180-room corporate hotel and 64-room leisure property for transfer practice. It is a training tool, not a production revenue system or professional certification.
 
 ![PACE desktop workspace](docs/assets/workspace.png)
 
@@ -13,18 +13,21 @@ All 17 lessons now include a bilingual study objective, focused reading, worked 
 ## What you can do
 
 - Follow 17 lesson loops, with detailed foundations in mental models, metrics, booking behavior and forecasting.
-- Calculate KPIs, compare booking snapshots and practice spreadsheet analysis.
+- Practice 16 quantitative competencies with reproducible, unseen numbers, plus three contextual reasoning checks.
+- Calculate KPIs, compare booking snapshots and transform reservation-level CSV data into a management summary using Excel.
+- Compare segment booking curves, forecast assumptions, wash, error, bias and scenario ranges.
 - Work through a morning revenue workflow, meeting pack and independent capstone.
 - Track completion separately from demonstrated mastery; revisit weak concepts.
 - Export synthetic CSV datasets for practice in Excel.
 - Use the command composer and Ctrl/Cmd + K to navigate.
-- Unlock interview practice after completing lessons and submitting the capstone.
+- Practice 30 bilingual interview questions across 15 junior analyst categories, available from the start. Commit open answers before seeing a rubric and one defensible model response.
+- Use an optional eight-question diagnostic covering calculations, decisions and data to choose a starting lesson.
 
 PACE supports neutral Latin American Spanish and English and is optimized for desktop study, with a responsive browser layout for phones and tablets. On narrow screens, use the menu to open navigation and the context button to open lesson references; tables scroll horizontally within their own area. The Windows executable remains the desktop distribution. Use the adjacent theme and ES/ENG language buttons in the upper-right toolbar. Both controls are also available during onboarding. Both preferences are stored on this device separately from learning progress. A short Spanish onboarding asks for your preferred name and optional professional context and learning goal, then introduces the learning loop. You can skip it or edit your profile from the sidebar. Profile details and progress stay separately on your computer. No account, backend or AI API is required.
 
 ## Download the Windows desktop application
 
-The latest **0.2.0** release includes the White Gold identity, light/dark appearance, Spanish/English selection and optional local onboarding. [Download PACE for Windows x64](https://github.com/dnmmraadev/pace/releases/download/v0.2.0/PACE-0.2.0-Windows.exe), then launch the portable executable. No development tools or server are required. The build is unsigned and stores progress locally.
+The latest published release is **0.2.0**. [Download PACE 0.2.0 for Windows x64](https://github.com/dnmmraadev/pace/releases/download/v0.2.0/PACE-0.2.0-Windows.exe), then launch the portable executable. The **0.3.0 source and local package** contain the new learning behavior described here; this change does not publish a GitHub release. The Windows build is unsigned and stores progress locally.
 
 See the [release notes and checksum](https://github.com/dnmmraadev/pace/releases/tag/v0.2.0) and the [version policy](docs/versioning.md) for current product limitations and future compatibility rules.
 
@@ -45,7 +48,7 @@ To build a portable Windows x64 executable:
 
     npm run desktop:package
 
-The executable is written to ../builds/0.2.0/package/PACE-0.2.0-Windows.exe. It runs without Node.js or a development server. Source builds require an Electron download during installation. See [desktop setup](docs/desktop.md) for packaging and storage details. Packaged macOS and Linux applications have not been verified.
+The executable is written to ../builds/0.3.0/package/PACE-0.3.0-Windows.exe. It runs without Node.js or a development server. Source builds require an Electron download during installation. See [desktop setup](docs/desktop.md) for packaging and storage details. Packaged macOS and Linux applications have not been verified.
 
 ## Check a change
 
@@ -58,7 +61,9 @@ The browser check starts a local server when needed. See [development](docs/deve
 
 ## Learning and data boundaries
 
-Mastery normally requires at least five distinct answered questions and 80% accuracy, using the latest answer per question. Completion does not imply mastery. Incorrect answers enter a review queue; successful review uses a simple 1 / 3 / 7-day spacing heuristic.
+Each concept needs at least five distinct generated instances and 80% first-attempt accuracy within its most recent eight distinct instances. A repeated prompt, changed question ID or correction after feedback adds no mastery evidence. A lesson is proficient only when all its mapped competencies meet that rule. Completion, fixed-question history, application/transfer calculations and ungraded reasoning remain separate. These scores are explainable learning heuristics without established psychometric validity.
+
+Existing 0.2.0 saved progress remains readable under the same version-1 storage key: completion, answers, reviews and capstone are retained. Historical fixed answers no longer establish proficiency; learners need fresh variable evidence. Incorrect answers enter a concept review queue; three correct unseen instances after the due time advance a simple 1 / 3 / 7-day schedule. See [assessment and content](docs/learning-content.md) for details and limitations.
 
 Written reasoning is retained for comparison with model responses, but is not automatically assessed for commercial quality. Capstone objective scoring and written self-review serve different purposes. Local progress is not a cloud backup and browser progress does not automatically transfer into the desktop application.
 

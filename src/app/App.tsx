@@ -13,7 +13,7 @@ import {
 import { findLesson, lessons } from '../data/curriculum';
 import { formulas } from '../data/formulas';
 import { glossary, sources } from '../data/glossary';
-import { diagnostic } from '../data/scenarios';
+import { diagnostic } from '../data/diagnostic';
 import { demonstrated, emptyProgress, mastery } from '../domain/learning';
 import { Capstone } from '../features/capstone/Capstone';
 import { CurriculumPage } from '../features/lessons/CurriculumPage';
@@ -21,6 +21,8 @@ import { DiagnosticPage } from '../features/lessons/DiagnosticPage';
 import { LessonPage } from '../features/lessons/LessonPage';
 import { InterviewPage } from '../features/practice/InterviewPage';
 import { PracticeLab } from '../features/practice/PracticeLab';
+import { VariablePractice } from '../features/practice/VariablePractice';
+import { AnalystAssignments } from '../features/practice/AnalystAssignments';
 import { Onboarding } from '../features/profile/Onboarding';
 import { PreferencesControls } from '../features/profile/PreferencesControls';
 import { ProgressPage } from '../features/progress/ProgressPage';
@@ -221,19 +223,27 @@ export default function App() {
           )}
           {es(
             view === 'Practice Lab' && (
-              <PracticeLab
-                onAttempt={(q, v) =>
-                  submit(
-                    q,
-                    v,
-                    q.id === 'lab-pickup'
-                      ? 'pickup'
-                      : q.id === 'lab-fc'
-                        ? 'forecast-rooms'
-                        : 'excel',
-                  )
-                }
-              />
+              <>
+                <PracticeLab
+                  learningTools={
+                    <>
+                      <VariablePractice progress={p} onAnswer={submit} />
+                      <AnalystAssignments progress={p} onAnswer={submit} />
+                    </>
+                  }
+                  onAttempt={(q, v) =>
+                    submit(
+                      q,
+                      v,
+                      q.id === 'lab-pickup'
+                        ? 'pickup'
+                        : q.id === 'lab-fc'
+                          ? 'forecast-rooms'
+                          : 'excel',
+                    )
+                  }
+                />
+              </>
             ),
           )}
           {es(
@@ -442,9 +452,9 @@ export default function App() {
                     )}
                   </p>
                   {es(
-                    diagnostic.map((q, i) => {
+                    diagnostic.map((q) => {
                       const a = p.attempts.filter((a) => a.questionId === q.id).at(-1);
-                      const topic = ['occupancy', 'adr', 'revpar', 'pickup', 'forecast-rooms'][i];
+                      const topic = q.topic!;
                       return (
                         <button
                           className="lesson-row"

@@ -24,6 +24,8 @@ The installed executable must be on PATH. The CLI is optional for npm ci, buildi
     codegraph impact record
     codegraph affected src/domain/learning.ts --json
 
+For 0.3.0 assessment changes, start with generatePractice, conceptEvidence and record. The generator catalog/mapping lives in src/domain/practice.ts; persisted contracts live in src/domain/content.ts and learning.ts. Interview/diagnostic and analyst assignment data have separate modules under src/data. See docs/decisions/0002-concept-evidence.md for the assessment and compatibility rationale; the index can be regenerated from source rather than carrying session history.
+
 Use context without code first to narrow the search. Request symbol source only when needed. Treat affected tests as candidates: browser tests can depend on runtime behavior even when an import path is absent. Run native tests explicitly for Electron changes.
 
 ## Local artifacts

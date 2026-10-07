@@ -1,19 +1,24 @@
 # Changelog
 
-## Unreleased
+## 0.3.0 — 2026-10-07 (prepared locally; not published)
 
+- Add deterministic seeded practice for 16 quantitative competencies and three contextual checks; canonical questions no longer count as variable mastery evidence.
+- Assess concepts on first submissions across at least five distinct generated instances with 80% accuracy in the latest eight; repeated data cannot inflate mastery or advance review.
+- Preserve version-1 saved completion, answers, reviews and capstone, adding reproducible exercise metadata and ungraded reflections without a destructive migration.
+- Expand the bilingual Interview Lab to 30 questions in 15 categories, with committed open responses, rubrics and non-required model answers; access is available from the start.
+- Expand the optional diagnostic to eight checks spanning metrics, booking behavior, pricing, distribution, forecast, data quality, Excel and interpretation.
+- Add downloadable reservation/channel datasets, a raw-to-summary Excel assignment, segment booking curves, visible forecast uncertainty and two transfer contexts (180-room urban and 64-room leisure hotels).
+- Separate completion, concept evidence, due review, application, transfer and written reflection in progress reporting.
 - Organize the renderer into app, feature, domain, shared and style modules; remove the App/Labs circular dependency.
 - Separate pure learning rules from storage and CSV downloads while preserving local progress and identifiers.
 - Add lint, formatting, architecture checks, test/configuration type checks and browser/native Windows CI validation.
 - Add an Electron restart persistence test and local CodeGraph context workflow with durable project instructions.
 
-## Unreleased
-
 - Expand all 17 lessons with bilingual study objectives, topic-specific reading, stepwise worked examples, interpretation, actions, ungraded reflection and references before independent practice.
-- Document Revenue Management and learning-design research; preserve questions, formulas, progress identifiers, mastery and review behavior. Session time estimate is now approximately 12 minutes.
+- Document Revenue Management and learning-design research; preserve canonical questions, formulas and progress identifiers. Session time estimate is now approximately 12 minutes.
 - Preserve the complete A in light mode by clipping original analytical bars to their stepped footprint rather than a rectangular region that overlaps the wordmark.
 - Align all main-workspace sections to one content column, including table captions and lesson warnings; use a single focus outline around reference search.
-- Restore the Interview Lab unlock requirement after the temporary trial: complete every core lesson and submit the capstone. Existing progress and interview attempts remain unchanged.
+- Make interview practice accessible from the start; preserve existing interview history.
 - Consistent header icon alignment and logo dimensions across themes; adjacent theme and ES/ENG language buttons in the top toolbar.
 - Responsive phone/tablet browser workspace with navigation and context dialogs, scrollable analytical tables and touch-friendly study controls.
 - PACE logo blends into each theme without a surrounding tile: lettering follows the text token and analytical bars retain their original colors.

@@ -1,6 +1,6 @@
 # Security
 
-The current documented version is PACE 0.2.0. There is no guaranteed maintenance window or response deadline.
+The current documented version is PACE 0.3.0. There is no guaranteed maintenance window or response deadline.
 
 ## Reporting
 

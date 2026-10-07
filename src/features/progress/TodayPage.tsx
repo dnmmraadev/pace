@@ -62,7 +62,7 @@ export function TodayPage({ profile, nextLesson, due, p, mastered, openLesson, n
         {es(
           !p.diagnostic && (
             <button className="text-button" onClick={() => navigate('Diagnostic')}>
-              {es('Take the optional 5-question diagnostic')}
+              {es('Take the optional 8-question diagnostic')}
             </button>
           ),
         )}

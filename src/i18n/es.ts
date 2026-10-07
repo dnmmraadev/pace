@@ -15,9 +15,10 @@ import {
   rubricCopy,
 } from './reference.es';
 import { uiCopy } from './ui.es';
+import { releaseCopy } from './release.es';
 
 // Translate display values, never persisted IDs, answers, filters or CSV source fields.
-export const catalog: Record<string, string> = { ...uiCopy, ...preferencesCopy };
+export const catalog: Record<string, string> = { ...uiCopy, ...preferencesCopy, ...releaseCopy };
 const add = (source: string, target: string) => {
   catalog[source] = target;
 };

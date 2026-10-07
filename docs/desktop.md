@@ -11,7 +11,7 @@ For a distributable Windows x64 portable build:
 
     npm run desktop:package
 
-Output is placed in ../builds/<package-version>/package, outside the source tree. For the current version, the portable launcher is ../builds/0.2.0/package/PACE-0.2.0-Windows.exe. The packaging process also leaves a win-unpacked application directory. Do not commit generated executables.
+Output is placed in ../builds/<package-version>/package, outside the source tree. For the current version, the portable launcher is ../builds/0.3.0/package/PACE-0.3.0-Windows.exe. The packaging process also leaves a win-unpacked application directory. Do not commit generated executables.
 
 In the organized local PACE workspace, source/ is the active Git checkout; releases/<version>/ contains retained published executables and checksums; builds/<version>/ contains generated packages, verification screenshots and isolated QA profiles; archive/ retains unpublished builds and historical work. Copy verified publication assets into a new releases/<version>/ directory. Do not overwrite existing published assets. The root README identifies the current executable.
 

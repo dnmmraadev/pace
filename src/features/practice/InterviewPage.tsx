@@ -1,10 +1,8 @@
-import { Lock } from 'lucide-react';
-import { lessons, type Question } from '../../data/curriculum';
-import { interview } from '../../data/scenarios';
-import type { Lesson } from '../../domain/content';
-import { type Progress } from '../../domain/learning';
-import { es } from '../../i18n/es';
-
+import { useState } from 'react';
+import type { Question, Lesson } from '../../domain/content';
+import { interview, interviewCategories } from '../../data/interview';
+import type { Progress } from '../../domain/learning';
+import { usePreferences } from '../../shared/storage/preferences';
 import { SectionTitle } from '../../shared/ui/SectionTitle';
 import { QuestionForm } from '../lessons/QuestionForm';
 
@@ -15,40 +13,51 @@ type Props = {
   openLesson: (id: string) => void;
   submit: (q: Question, answer: string, topic?: string, rationale?: string) => void;
 };
-export function InterviewPage({ p, interviewUnlocked, nextLesson, openLesson, submit }: Props) {
+export function InterviewPage({ submit }: Props) {
+  const { language } = usePreferences();
+  const [category, setCategory] = useState<string>(interviewCategories[0][0]);
+  const spanish = language === 'es';
   return (
     <>
       <SectionTitle
-        eyebrow={es('MODULE 12')}
-        title={es('Interview Lab')}
-        description={es(
-          'Commit to an answer before seeing the explanation. Practice the calculation and the reasoning.',
-        )}
+        eyebrow="MODULE 12"
+        title="Interview Lab"
+        description={
+          spanish
+            ? 'Practica entrevistas de analista junior con casos sintéticos. Responde antes de consultar la explicación. Las respuestas abiertas se revisan con criterios; no reciben calificación automática.'
+            : 'Practice junior analyst screening with synthetic cases. Commit before viewing feedback. Open answers use a self-review checklist; they are not automatically graded.'
+        }
       />
-      {es(
-        !interviewUnlocked ? (
-          <div className="empty-state">
-            <Lock size={28} />
-            <h2>{es('Build the evidence first')}</h2>
-            <p>
-              {es('Complete all ')}
-              {es(lessons.length)}
-              {es(' lessons and submit the independent capstone to unlock the interview lab.')}
-            </p>
-            <p>
-              {es(p.completed.length + ' lessons completed · Capstone')}{' '}
-              {es(p.capstone ? 'submitted' : 'not submitted')}
-            </p>
-            <button className="primary" onClick={() => openLesson(nextLesson.id)}>
-              {es('Continue learning')}
-            </button>
-          </div>
-        ) : (
-          interview.map((q) => (
-            <QuestionForm key={q.id} q={q} onAnswer={(v) => submit(q, v, 'interview')} />
-          ))
-        ),
-      )}
+      <div className="panel">
+        <label htmlFor="interview-category">
+          {spanish ? 'Competencia de entrevista' : 'Interview competency'}
+        </label>
+        <select
+          id="interview-category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          {interviewCategories.map(([id, en, es]) => (
+            <option key={id} value={id}>
+              {spanish ? es : en}
+            </option>
+          ))}
+        </select>
+        <p>
+          {spanish
+            ? 'El laboratorio está disponible desde el inicio. Usa tus propias palabras: evidencia → hipótesis → acción → seguimiento. El ejemplo de respuesta es una posibilidad defendible, no un guion obligatorio.'
+            : 'The lab is available from the start. Use your own words: evidence → hypothesis → action → monitoring. A model response is one defensible possibility, not a required script.'}
+        </p>
+      </div>
+      {interview
+        .filter((q) => q.category === category)
+        .map((q) => (
+          <QuestionForm
+            key={q.id}
+            q={q}
+            onAnswer={(value, rationale) => submit(q, value, 'interview', rationale)}
+          />
+        ))}
     </>
   );
 }
