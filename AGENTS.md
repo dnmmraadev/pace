@@ -1,5 +1,10 @@
 # Working on PACE
 
+## Git workflow
+
+- Work, commit and push directly on main, as requested by the repository owner. Do not create development branches or pull requests unless the user explicitly requests an exception.
+- Synchronize with origin/main before starting changes. Preserve remote work and never force-push main.
+
 ## Context and CodeGraph
 
 - Work from the repository root. Read docs/architecture.md and docs/development.md for the current map and commands.
