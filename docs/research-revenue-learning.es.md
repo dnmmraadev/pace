@@ -35,15 +35,15 @@ La lectura permanece disponible al volver al concepto. No se impone un temporiza
 
 ## Aplicación a Revenue Management
 
-| Bloque | Material ampliado |
-| --- | --- |
+| Bloque                         | Material ampliado                                                                                                         |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
 | Inventario y función comercial | Unidad de habitación-noche, disponibilidad física y comercial, contribución, responsabilidades y evaluación de decisiones |
-| Métricas | Denominadores, asignación de paquetes, promedios ponderados, puntos porcentuales y límites de RevPAR/TRevPAR |
-| Reservas | Fecha de estancia y corte, altas y bajas, comparabilidad de Pace, LOS, anticipación y cohortes de pérdidas |
-| Pronóstico | Evidencia de Pickup, escenarios, ponderación de ingreso, presupuesto frente a expectativa y demanda sin restricciones |
-| Precios y distribución | Condiciones de oferta, controles por estancia, desplazamiento, incrementalidad y costo de canal |
-| Benchmarking y Excel | Descomposición de índices, datos comparables, unidad de fila, agregación y conciliación |
-| Rutina y reunión | Hechos frente a hipótesis, priorización, responsables, decisiones por fecha y seguimiento |
+| Métricas                       | Denominadores, asignación de paquetes, promedios ponderados, puntos porcentuales y límites de RevPAR/TRevPAR              |
+| Reservas                       | Fecha de estancia y corte, altas y bajas, comparabilidad de Pace, LOS, anticipación y cohortes de pérdidas                |
+| Pronóstico                     | Evidencia de Pickup, escenarios, ponderación de ingreso, presupuesto frente a expectativa y demanda sin restricciones     |
+| Precios y distribución         | Condiciones de oferta, controles por estancia, desplazamiento, incrementalidad y costo de canal                           |
+| Benchmarking y Excel           | Descomposición de índices, datos comparables, unidad de fila, agregación y conciliación                                   |
+| Rutina y reunión               | Hechos frente a hipótesis, priorización, responsables, decisiones por fecha y seguimiento                                 |
 
 Todos los ejemplos describen datos inventados para un resort de aproximadamente 900 habitaciones. Los costos y supuestos no representan benchmarks de un hotel real. El ingreso de habitaciones sigue la convención de asignación de alojamiento existente; no se duplica el ingreso total del paquete. Los cálculos agregados utilizan ponderaciones por habitaciones-noche.
 

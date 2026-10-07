@@ -2,21 +2,21 @@
 
 ## Curriculum
 
-| Module | Focus |
-| --- | --- |
-| 0 | Non-blocking diagnostic |
-| 1 | Revenue Management mental model |
-| 2 | Core hotel metrics |
-| 3 | Booking behavior and snapshots |
-| 4 | Demand and forecasting |
-| 5 | Pricing, yield and inventory |
-| 6 | Segmentation and distribution |
-| 7 | Benchmarking and market performance |
-| 8 | Spreadsheet analysis simulations |
-| 9 | Daily analyst workflow |
-| 10 | Revenue meeting |
-| 11 | Independent capstone |
-| 12 | Interview practice |
+| Module | Focus                               |
+| ------ | ----------------------------------- |
+| 0      | Non-blocking diagnostic             |
+| 1      | Revenue Management mental model     |
+| 2      | Core hotel metrics                  |
+| 3      | Booking behavior and snapshots      |
+| 4      | Demand and forecasting              |
+| 5      | Pricing, yield and inventory        |
+| 6      | Segmentation and distribution       |
+| 7      | Benchmarking and market performance |
+| 8      | Spreadsheet analysis simulations    |
+| 9      | Daily analyst workflow              |
+| 10     | Revenue meeting                     |
+| 11     | Independent capstone                |
+| 12     | Interview practice                  |
 
 The application includes 17 lesson loops, including 11 lessons across Modules 1–4. Later modules have initial instructional and practice content; this does not imply every advanced topic has equal depth.
 
@@ -51,4 +51,3 @@ Never present synthetic data as records from an actual hotel.
 Use authoritative industry sources and write original explanations. Starting references include [HSMAI](https://academy.hsmai.org/revenue/), [IDeaS](https://ideas.com/), [STR benchmarking](https://str.com/sites/default/files/The-Ultimate-Guide-to-Hotel-Benchmarking.pdf), [SiteMinder](https://www.siteminder.com/r/revenue-management/) and [Cloudbeds](https://www.cloudbeds.com/revenue-management/). Prefer standard definitions and identify vendor-specific behavior when relevant.
 
 Changes to calculations or scheduling should include a focused test. Content corrections should include the supporting source and explain any changed assumptions.
-

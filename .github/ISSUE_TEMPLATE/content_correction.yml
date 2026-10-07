@@ -20,4 +20,3 @@ body:
       description: Link primary references where relevant.
     validations:
       required: true
-

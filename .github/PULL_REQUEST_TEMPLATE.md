@@ -12,4 +12,3 @@ List relevant checks and manual verification.
 - [ ] No secrets, personal progress or generated packages are included.
 - [ ] Persisted content identifiers and keyboard access are preserved.
 - [ ] Documentation is updated where behavior changes.
-

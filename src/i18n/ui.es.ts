@@ -1,4 +1,5 @@
-export const uiCopy: Record<string, string> = Object.fromEntries(String.raw`
+export const uiCopy: Record<string, string> = Object.fromEntries(
+  String.raw`
 Today¦Hoy
 Curriculum¦Ruta de aprendizaje
 Review Queue¦Cola de repaso
@@ -299,4 +300,12 @@ SiteMinder — RevPAR calculation¦SiteMinder — Cálculo de RevPAR
 IDeaS — Forecasting and unconstrained demand¦IDeaS — Pronóstico y demanda no restringida
 Cloudbeds — Revenue Management guide¦Cloudbeds — Guía de Revenue Management
 Cloudbeds — Pickup reports¦Cloudbeds — Reportes de Pickup
-`.trim().split('\n').map(row => row.split('¦').map(text => text.split(String.fromCharCode(92) + 'n').join(String.fromCharCode(10)))));
+`
+    .trim()
+    .split('\n')
+    .map((row) =>
+      row
+        .split('¦')
+        .map((text) => text.split(String.fromCharCode(92) + 'n').join(String.fromCharCode(10))),
+    ),
+);

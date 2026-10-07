@@ -4,25 +4,25 @@ The canonical logo remains public/brand/pace-logo.png. Its wordmark geometry is 
 
 ## Semantic tokens
 
-The source of truth is src/theme.css. Components use semantic variables; compatibility aliases keep the existing component architecture unified.
+The source of truth is src/styles/theme.css. Components use semantic variables; compatibility aliases keep the existing component architecture unified.
 
-| Role | Value or derivation |
-| --- | --- |
-| Primary background / surface | #FFFFFF |
-| Secondary background / surface | #F7F6F3 |
-| Subtle border / separators | #E2DDD6 |
-| Primary gold | #C9A227 |
-| Deep gold | #886F3D |
-| Primary dark | #0F1419 |
-| Secondary text | #46515B |
-| Muted text | #626C75 |
-| Success | #23734B |
-| Warning | #865C13 |
-| Error | #B33B38 |
-| Information | #315D84 |
-| Soft accent / status surfaces | Light color mixes derived from the tokens |
-| Focus ring | Deep gold for visible contrast on white |
-| Control border | Dark / separator mix for readable control boundaries |
+| Role                           | Value or derivation                                  |
+| ------------------------------ | ---------------------------------------------------- |
+| Primary background / surface   | #FFFFFF                                              |
+| Secondary background / surface | #F7F6F3                                              |
+| Subtle border / separators     | #E2DDD6                                              |
+| Primary gold                   | #C9A227                                              |
+| Deep gold                      | #886F3D                                              |
+| Primary dark                   | #0F1419                                              |
+| Secondary text                 | #46515B                                              |
+| Muted text                     | #626C75                                              |
+| Success                        | #23734B                                              |
+| Warning                        | #865C13                                              |
+| Error                          | #B33B38                                              |
+| Information                    | #315D84                                              |
+| Soft accent / status surfaces  | Light color mixes derived from the tokens            |
+| Focus ring                     | Deep gold for visible contrast on white              |
+| Control border                 | Dark / separator mix for readable control boundaries |
 
 White dominates the central workspace. Near-white supports the rails and command surface. Gold marks selection, primary actions and progress; deep gold provides readable small interactive text. Primary gold is not used as small body text on white. Gold buttons use dark text. Status colors retain their distinct meaning.
 

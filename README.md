@@ -30,7 +30,7 @@ See the [release notes and checksum](https://github.com/dnmmraadev/pace/releases
 
 ## Run from source
 
-Use Node.js 22.12 or newer and npm. Node.js 22 is the documented development baseline.
+Use Node.js 22.13 or newer and npm. Node.js 22 is the documented development baseline.
 
     git clone https://github.com/dnmmraadev/pace.git
     cd pace
@@ -64,33 +64,34 @@ Written reasoning is retained for comparison with model responses, but is not au
 
 ## Local commands
 
-| Command | Action |
-| --- | --- |
-| /next | Continue the learning session |
-| /review | Open the review queue |
-| /formula | Open the formula reference |
-| /glossary | Open the glossary |
-| /progress | View completion and mastery |
-| /practice | Open the practice lab |
-| /reset | Start the progress-reset flow |
+| Command   | Action                        |
+| --------- | ----------------------------- |
+| /next     | Continue the learning session |
+| /review   | Open the review queue         |
+| /formula  | Open the formula reference    |
+| /glossary | Open the glossary             |
+| /progress | View completion and mastery   |
+| /practice | Open the practice lab         |
+| /reset    | Start the progress-reset flow |
 
 ## Documentation
 
-| Guide | Purpose |
-| --- | --- |
-| [Architecture](docs/architecture.md) | Renderer, content, progress and desktop boundaries |
-| [Development](docs/development.md) | Setup, checks and validation |
-| [Desktop](docs/desktop.md) | Launching, packaging and troubleshooting |
-| [Learning content](docs/learning-content.md) | Curriculum, synthetic-data rules and assessment model |
-| [Design system](docs/design-system.md) | Canonical brand and Graphite / Teal tokens |
-| [Documentation research](docs/documentation-research.md) | Sources reviewed and practices adopted |
-| [Changelog](CHANGELOG.md) | Shipped behavior and limitations |
-| [Localization](docs/localization.md) | Spanish terminology and persistence-safe display translation |
-| [Versioning](docs/versioning.md) | Version research, compatibility contract and release procedure |
+| Guide                                                                 | Purpose                                                        |
+| --------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [CodeGraph](docs/codegraph.md)                                        | Local code context, indexing and affected tests                |
+| [Architecture decisions](docs/decisions/0001-modular-architecture.md) | Modular organization and dependency rules                      |
+| [Architecture](docs/architecture.md)                                  | Renderer, content, progress and desktop boundaries             |
+| [Development](docs/development.md)                                    | Setup, checks and validation                                   |
+| [Desktop](docs/desktop.md)                                            | Launching, packaging and troubleshooting                       |
+| [Learning content](docs/learning-content.md)                          | Curriculum, synthetic-data rules and assessment model          |
+| [Design system](docs/design-system.md)                                | Canonical brand and Graphite / Teal tokens                     |
+| [Documentation research](docs/documentation-research.md)              | Sources reviewed and practices adopted                         |
+| [Changelog](CHANGELOG.md)                                             | Shipped behavior and limitations                               |
+| [Localization](docs/localization.md)                                  | Spanish terminology and persistence-safe display translation   |
+| [Versioning](docs/versioning.md)                                      | Version research, compatibility contract and release procedure |
 
 ## Contributing, security and rights
 
 Read [CONTRIBUTING](CONTRIBUTING.md) before proposing changes and [SECURITY](SECURITY.md) before reporting sensitive issues. Collaborators should follow the [code of conduct](CODE_OF_CONDUCT.md).
 
 A distribution license has not been selected. The [rights notice](LICENSE) does not grant reuse rights. Third-party dependencies remain under their own licenses.
-

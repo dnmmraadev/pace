@@ -4,19 +4,13 @@
   "directories": {
     "output": "../builds/${version}/package"
   },
-  "files": [
-    "dist/**/*",
-    "desktop/**/*",
-    "package.json"
-  ],
+  "files": ["dist/**/*", "desktop/**/*", "package.json"],
   "asar": true,
   "win": {
     "target": [
       {
         "target": "portable",
-        "arch": [
-          "x64"
-        ]
+        "arch": ["x64"]
       }
     ],
     "icon": "public/brand/pace-logo.png",

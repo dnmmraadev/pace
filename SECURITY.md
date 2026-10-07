@@ -15,4 +15,3 @@ PACE has no authentication or application backend. Progress is stored locally an
 Electron uses sandboxing, context isolation and disabled renderer Node integration. Do not weaken these boundaries to solve a renderer problem. Keep dependencies updated and review changes to URL handling or native privileges carefully.
 
 CSV exports contain synthetic learning data. The optional browser-tool integration exposes read-only learning information when supported; it does not connect to an AI API.
-

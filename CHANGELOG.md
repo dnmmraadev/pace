@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Organize the renderer into app, feature, domain, shared and style modules; remove the App/Labs circular dependency.
+- Separate pure learning rules from storage and CSV downloads while preserving local progress and identifiers.
+- Add lint, formatting, architecture checks, test/configuration type checks and browser/native Windows CI validation.
+- Add an Electron restart persistence test and local CodeGraph context workflow with durable project instructions.
+
+## Unreleased
+
 - Expand all 17 lessons with bilingual study objectives, topic-specific reading, stepwise worked examples, interpretation, actions, ungraded reflection and references before independent practice.
 - Document Revenue Management and learning-design research; preserve questions, formulas, progress identifiers, mastery and review behavior. Session time estimate is now approximately 12 minutes.
 - Preserve the complete A in light mode by clipping original analytical bars to their stepped footprint rather than a rectangular region that overlaps the wordmark.
@@ -42,4 +49,3 @@ First public evaluation release. The previous 1.0.0 package value was an unpubli
 - Repository setup, architecture, contribution, security and content documentation.
 
 Known limits: written commercial reasoning uses model-response comparison rather than automatic essay grading; progress has no cloud backup or browser-to-desktop transfer; packaged macOS/Linux targets are unverified; no mobile product or certification is provided.
-

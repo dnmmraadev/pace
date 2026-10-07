@@ -21,4 +21,3 @@ body:
       description: Include Windows version or browser and whether this is the native app.
     validations:
       required: true
-

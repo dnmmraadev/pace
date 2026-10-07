@@ -11,6 +11,7 @@ This version retains the White Gold visual system, light/dark appearance, Spanis
 PACE's compatibility surface consists of persisted progress schema and identifiers, documented command behavior, documented CSV export columns and meanings, and supported desktop launch/packaging behavior. There is no external service API.
 
 During 0.x development:
+
 - Use a new minor version for feature additions or breaking compatibility changes, with explicit migration notes for saved progress or CSV consumers.
 - Use patch revisions for compatible fixes.
 - Publish releases as plain versions such as 0.2.0, 0.2.1 and 0.3.0, without prerelease suffixes.

@@ -1,0 +1,68 @@
+/* PACE — White Gold Dark Accent. Semantic colors belong here. */
+:root {
+  color-scheme: light;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f6f3;
+  --surface-primary: #ffffff;
+  --surface-secondary: #f7f6f3;
+  --border-subtle: #e2ddd6;
+  --border-control: color-mix(in srgb, #0f1419 48%, #e2ddd6);
+  --text-primary: #0f1419;
+  --text-secondary: #46515b;
+  --text-muted: #626c75;
+  --accent-primary: #c9a227;
+  --text-on-accent: #0f1419;
+  --accent-secondary: #886f3d;
+  --accent-soft: color-mix(in srgb, var(--accent-primary) 9%, var(--bg-primary));
+  --focus-ring: var(--accent-secondary);
+  --status-success: #23734b;
+  --status-warning: #865c13;
+  --status-error: #b33b38;
+  --status-info: #315d84;
+
+  /* Compatibility aliases keep the existing component system unified. */
+  --color-background: var(--bg-primary);
+  --color-surface: var(--surface-secondary);
+  --color-elevated: color-mix(in srgb, var(--border-subtle) 45%, var(--bg-primary));
+  --color-border: var(--border-subtle);
+  --color-text: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--accent-primary);
+  --color-accent-active: var(--accent-secondary);
+  --color-success: var(--status-success);
+  --color-warning: var(--status-warning);
+  --color-danger: var(--status-error);
+  --surface-selected: var(--accent-soft);
+  --surface-success: color-mix(in srgb, var(--status-success) 7%, var(--bg-primary));
+  --surface-warning: color-mix(in srgb, var(--status-warning) 7%, var(--bg-primary));
+  --surface-danger: color-mix(in srgb, var(--status-error) 7%, var(--bg-primary));
+  --surface-info: color-mix(in srgb, var(--status-info) 7%, var(--bg-primary));
+  --overlay-backdrop: color-mix(in srgb, var(--text-primary) 28%, transparent);
+  --overlay-shadow: color-mix(in srgb, var(--text-primary) 10%, transparent);
+  --font-sans: Inter, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', Consolas, monospace;
+  --radius-control: 4px;
+  --radius-panel: 6px;
+}
+
+/* Dark workstation: the same gold identity with accessible graphite surfaces. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg-primary: #0f1419;
+  --bg-secondary: #151b22;
+  --surface-primary: #151b22;
+  --surface-secondary: #1b232d;
+  --border-subtle: #343e49;
+  --border-control: #687583;
+  --text-primary: #e8edf2;
+  --text-secondary: #b4bfcb;
+  --text-muted: #98a5b3;
+  --accent-secondary: #d7b653;
+  --focus-ring: var(--accent-primary);
+  --status-success: #68d391;
+  --status-warning: #f6ad55;
+  --status-error: #fc8181;
+  --status-info: #91b9df;
+  --overlay-backdrop: color-mix(in srgb, #0f1419 65%, transparent);
+}

@@ -36,4 +36,3 @@ Ctrl/Cmd + K opens search. The command composer supports the local commands list
 - **Progress appears missing:** confirm whether you opened the browser workspace or desktop workspace; each has its own origin and profile.
 
 Windows x64 is the verified packaging target. This documentation does not claim macOS or Linux packaged support.
-
