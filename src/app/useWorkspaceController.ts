@@ -6,6 +6,8 @@ import { usePreferences } from '../shared/storage/preferences';
 import { createProfile, loadProfile, saveProfile, type Profile } from '../shared/storage/profile';
 import { loadProgress, saveProgress } from '../shared/storage/progress';
 import { registerLearningTools } from './integrations/webmcp';
+import { generatePractice, topicCompetencies } from '../domain/practice';
+import { diagnostic } from '../data/diagnostic';
 export function useWorkspaceController() {
   usePreferences();
   const [compact, setCompact] = useState(() => window.matchMedia('(max-width:1000px)').matches);
@@ -25,6 +27,13 @@ export function useWorkspaceController() {
   const [saved, setSaved] = useState(true);
   const [reviewId, setReviewId] = useState('');
   const [sessionKey, setSessionKey] = useState(0);
+  const [practiceSeed, setPracticeSeed] = useState(p.attempts.length + 1);
+  const [mixedTopic, setMixedTopic] = useState<string | null>(
+    () =>
+      p.reviews.find((r) => r.topic !== p.lastLesson)?.topic ??
+      p.completed.find((id) => id !== p.lastLesson) ??
+      null,
+  );
   const main = useRef<HTMLElement>(null);
   useEffect(() => {
     const query = window.matchMedia('(max-width:1000px)');
@@ -39,9 +48,17 @@ export function useWorkspaceController() {
   const l = findLesson(lessonId) || lessons[0];
   const mastered = lessons.filter((x) => demonstrated(p, x.id)).length;
   const due = p.reviews.filter((r) => r.due <= Date.now());
-  const coreComplete = lessons.every((x) => p.completed.includes(x.id)) && !!p.capstone;
-  const interviewUnlocked = coreComplete;
-  const nextLesson = lessons.find((x) => !p.completed.includes(x.id)) || l;
+  const interviewUnlocked = true;
+  const recommended = diagnostic.find((q) => {
+    const a = p.attempts.filter((a) => a.questionId === q.id).at(-1);
+    return a && !a.correct;
+  })?.topic;
+  const nextLesson =
+    (p.diagnostic && recommended && !p.completed.includes(recommended)
+      ? findLesson(recommended)
+      : undefined) ??
+    lessons.find((x) => !p.completed.includes(x.id)) ??
+    l;
   useEffect(() => {
     setSaved(saveProgress(p));
   }, [p]);
@@ -81,6 +98,12 @@ export function useWorkspaceController() {
     setStep(0);
     setAnswered(false);
     setSessionKey((k) => k + 1);
+    setPracticeSeed(p.attempts.length + 1);
+    setMixedTopic(
+      p.reviews.find((r) => r.topic !== id)?.topic ??
+        p.completed.filter((value) => value !== id).at(-1) ??
+        null,
+    );
     setView('Lesson');
     setP((p) => ({ ...p, lastLesson: id }));
   };
@@ -92,14 +115,24 @@ export function useWorkspaceController() {
       setModal('');
     }
   };
-  const submit = (q: Question, answer: string, topic = l.id, rationale?: string) => {
+  const submit = (q: Question, answer: string, topic = q.topic ?? l.id, rationale?: string) => {
     setP((p) => record(p, topic, q, answer, Date.now(), rationale));
     setAnswered(true);
   };
-  const mixed =
-    p.reviews.map((r) => findLesson(r.topic)).filter((x) => x && x.id !== l.id)[0] ||
-    lessons.filter((x) => p.completed.includes(x.id) && x.id !== l.id).slice(-1)[0];
-  const lessonQs = [...l.questions, l.scenario, ...(mixed ? [mixed.questions[1]] : [])];
+  const mixed = mixedTopic ? findLesson(mixedTopic) : undefined;
+  const concepts = topicCompetencies[l.id] ?? ['available-room-nights'];
+  const generated = concepts.map((concept, index) =>
+    generatePractice(concept, practiceSeed + index, l.id),
+  );
+  const lessonQs = [
+    generated[0],
+    ...l.questions.slice(1),
+    l.scenario,
+    ...generated.slice(1),
+    ...(mixed
+      ? [generatePractice(topicCompetencies[mixed.id][0], practiceSeed + 13, mixed.id)]
+      : []),
+  ];
   const currentQ = lessonQs[step - 1];
   const finish = () => {
     setP((p) => ({ ...p, completed: [...new Set([...p.completed, l.id])] }));

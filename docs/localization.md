@@ -4,6 +4,8 @@ PACE's learner-facing product uses neutral Latin American Spanish with hotel ter
 
 The catalog lives in src/i18n/: lessons.es.ts contains all lesson copy, reference.es.ts covers glossary/formulas/scenarios, ui.es.ts covers interface labels, and es.ts binds display copy and handles dynamic readouts. The components translate at the presentation boundary.
 
+0.3.0 adds release.es.ts for new UI labels. Generated exercises, the diagnostic, interviews and analyst assignments carry explicit ES/EN copies in their data contracts; choice labels bind by original option index without changing stored values. Broader diagnostic items have new identifiers; legacy diagnostic records retain their original meaning in history.
+
 ## Compatibility
 
 Do not translate or rename lesson/question IDs, view keys, command strings, option values, saved answers, reflection keys or dataset field names. Original values remain the grading/filtering/persistence contract; their rendered labels are Spanish. CSV source datasets preserve their technical fields and coded values so existing Excel exercises continue to work. User-entered reports are retained verbatim.

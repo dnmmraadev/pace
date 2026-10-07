@@ -18,7 +18,7 @@ export function CurriculumPage({ p, interviewUnlocked, navigate, openLesson }: P
         eyebrow={es('THE LEARNING PATH')}
         title={es('From operations to analysis')}
         description={es(
-          'Complete in order or jump to a topic. Mastery requires at least five distinct checks and 80% correct current evidence.',
+          'Each competency needs at least five distinct instances and 80% first-attempt accuracy in the most recent eight. This is an explainable learning heuristic, not a validated certification.',
         )}
       />
       <button className="subtle" onClick={() => navigate('Diagnostic')}>

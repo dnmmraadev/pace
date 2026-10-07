@@ -19,6 +19,7 @@ PACE has a React / TypeScript renderer built with Vite and a small Electron host
 | src/features/profile/             | Onboarding and preference controls                                   |
 | src/domain/content.ts             | Lesson and question contracts                                        |
 | src/domain/learning.ts            | Pure assessment, mastery and review rules                            |
+| src/domain/practice.ts            | Seeded generators, competency labels and lesson mappings             |
 | src/shared/ui/                    | Brand, tables, headings and accessible dialog primitive              |
 | src/shared/storage/               | Local progress, profile and preferences                              |
 | src/shared/export/                | CSV serialization and browser download adapter                       |
@@ -42,6 +43,8 @@ Run npm run check:architecture to resolve imports, detect circular dependencies 
 ## Learning state and compatibility
 
 A response is evaluated against structured content, recorded with stable question and concept identifiers, and used to update mastery and review scheduling. Lesson completion is separate. Views use the same persisted progress model.
+
+Variable exercises freeze their instance during an active response, including language changes. Generated attempts persist seed, generator version, parameter signature and values. Concept evidence deduplicates by data signature and uses first submissions; canonical IDs remain useful history. Interview/assignment copies carry explicit ES/EN text, while legacy content uses the existing display catalog. Open responses persist as ungraded reflections. See [assessment decision](decisions/0002-concept-evidence.md) and [content rules](learning-content.md).
 
 Keep the legacy localStorage key revenue-desk.progress.v1, plus pace.profile.v1 and pace.preferences.v1. Lesson, question and concept identifiers and answer values are persistence contracts. Change them only with an explicit migration and compatibility tests. Display translation must not change persisted identifiers, choices or CSV source values.
 

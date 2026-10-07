@@ -15,9 +15,7 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-test('interviews require both completed lessons and capstone without changing saved attempts', async ({
-  page,
-}) => {
+test('interviews are accessible at any stage without changing saved attempts', async ({ page }) => {
   await page.goto('http://127.0.0.1:5173');
   const capstone = { answers: {}, insights: 'Saved report', submitted: 123, score: 0 };
   const attempt = {
@@ -27,7 +25,7 @@ test('interviews require both completed lessons and capstone without changing sa
     correct: true,
     at: 123,
   };
-  for (const [completed, submission, unlocked] of [
+  for (const [completed, submission] of [
     [[], capstone, false],
     [lessons.map((l) => l.id), null, false],
     [lessons.map((l) => l.id), capstone, true],
@@ -44,22 +42,22 @@ test('interviews require both completed lessons and capstone without changing sa
     });
     await page.reload();
     await page.getByRole('button', { name: 'Laboratorio de entrevistas', exact: true }).click();
-    await expect(page.locator('main form.question')).toHaveCount(unlocked ? 8 : 0);
-    if (!unlocked) await expect(page.locator('main .empty-state')).toBeVisible();
+    await expect(page.locator('main form.question')).toHaveCount(2);
     expect(
       await page.evaluate((key) => JSON.parse(localStorage.getItem(key)!), STORAGE_KEY),
     ).toEqual(JSON.parse(JSON.stringify(progress)));
   }
 });
 
-test('wide workspace alignment, reference focus and interview lock', async ({ page }) => {
+test('wide workspace alignment, reference focus and interview access', async ({ page }) => {
   await page.setViewportSize({ width: 2560, height: 1440 });
   await page.goto('http://127.0.0.1:5173');
   for (const theme of ['light', 'dark']) {
     if (theme === 'dark') await page.getByRole('button', { name: 'Cambiar a modo oscuro' }).click();
     await page.getByRole('button', { name: 'Laboratorio de práctica', exact: true }).click();
-    const caption = await page.locator('main .table-caption').first().boundingBox();
-    const table = await page.locator('main .table-scroll').first().boundingBox();
+    await page.getByText('Tablas y ejemplos de referencia', { exact: true }).click();
+    const caption = await page.locator('#canonical-practice .table-caption').first().boundingBox();
+    const table = await page.locator('#canonical-practice .table-scroll').first().boundingBox();
     expect(caption).not.toBeNull();
     expect(table).not.toBeNull();
     expect(caption!.x).toBeCloseTo(table!.x, 1);
@@ -81,15 +79,14 @@ test('wide workspace alignment, reference focus and interview lock', async ({ pa
     await page.getByRole('button', { name: 'Cerrar diálogo' }).click();
   }
   await page.getByRole('button', { name: 'Laboratorio de entrevistas', exact: true }).click();
-  await expect(page.locator('main .empty-state')).toBeVisible();
-  await expect(page.locator('main form.question')).toHaveCount(0);
+  await expect(page.locator('main form.question')).toHaveCount(2);
   const progress = await page.evaluate(
     (key) => JSON.parse(localStorage.getItem(key)!),
     STORAGE_KEY,
   );
   expect(progress.completed).toEqual([]);
   expect(progress.capstone).toBeFalsy();
-  await page.screenshot({ path: 'test-results/interview-locked.png' });
+  await page.screenshot({ path: 'test-results/interview-accessible.png' });
 });
 test('desktop lesson loop, review, commands, persistence, CSV and screenshots', async ({
   page,
@@ -149,6 +146,7 @@ test('desktop lesson loop, review, commands, persistence, CSV and screenshots', 
   ).toBeVisible();
   await page.getByLabel(es('Local command')).fill(es('/practice'));
   await page.getByLabel(es('Local command')).press(es('Enter'));
+  await page.getByText('Tablas y ejemplos de referencia', { exact: true }).click();
   const download = page.waitForEvent('download');
   await page.getByRole('button', { name: es('Export CSV'), exact: true }).click();
   expect((await download).suggestedFilename()).toBe('synthetic-forward-dates.csv');
@@ -217,10 +215,11 @@ test('Spanish desktop views, legacy progress, reference search and analytical ta
     await page.locator('.left-rail nav').getByRole('button', { name, exact: true }).click();
     await capture(slug);
   }
+  await page.getByText('Tablas y ejemplos de referencia', { exact: true }).click();
   await page.getByRole('tab', { name: 'Análisis en Excel', exact: true }).click();
-  await page.locator('main').getByRole('combobox').selectOption('Direct');
-  await expect(page.locator('main').getByRole('combobox')).toHaveValue('Direct');
-  await expect(page.locator('tbody')).not.toContainText(/\bDirect\b/);
+  await page.locator('#canonical-practice').getByRole('combobox').selectOption('Direct');
+  await expect(page.locator('#canonical-practice').getByRole('combobox')).toHaveValue('Direct');
+  await expect(page.locator('#canonical-practice tbody')).not.toContainText(/\bDirect\b/);
   await page.getByLabel('Crear resumen por canal tipo tabla dinámica').check();
   await capture('excel');
   await page.getByRole('tab', { name: 'Revisión matutina y reunión', exact: true }).click();

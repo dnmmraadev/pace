@@ -1,5 +1,7 @@
 # Development
 
+To smoke-test the packaged Electron binary with the native isolation/restart test, set PACE_PACKAGED_EXECUTABLE to the absolute path of win-unpacked/PACE.exe and run `npx playwright test --config playwright.electron.config.ts`. Without that variable, the test launches the development Electron host against dist. To test the actual portable launcher, set PACE_PORTABLE_EXECUTABLE to its absolute path; portable.spec.ts connects to the extracted app over a loopback browser endpoint. NSIS does not expose Electron's Node inspector through the bootstrap process, so `_electron.launch` cannot directly control that wrapper. Both tests use isolated temporary QA profiles and leave learner progress untouched. The portable check is skipped when no artifact path is provided.
+
 ## Setup
 
 Use Node.js 22.13+ (22 LTS baseline; Node 24 LTS also supported) and npm. Install with npm ci, then run npm run dev. Launch the Windows application with npm run desktop. Build the portable executable with npm run desktop:package.

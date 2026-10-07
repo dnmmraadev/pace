@@ -102,12 +102,12 @@ export function LessonPage({
             <div className="exercise-heading">
               <span className="eyebrow">
                 {es(
-                  step === 1
-                    ? 'CALCULATE'
-                    : step === 5
-                      ? 'MAKE A REVENUE DECISION'
-                      : step > 5
-                        ? 'MIXED REVIEW · ' + mixed?.title
+                  currentQ?.topic === mixed?.id && mixed
+                    ? 'MIXED REVIEW · ' + mixed.title
+                    : typeof currentQ?.answer === 'number'
+                      ? 'CALCULATE'
+                      : step === 5
+                        ? 'MAKE A REVENUE DECISION'
                         : 'RETRIEVE FROM MEMORY',
                 )}
               </span>
@@ -118,7 +118,7 @@ export function LessonPage({
                 <QuestionForm
                   key={`${sessionKey}-${step}`}
                   q={currentQ}
-                  onAnswer={(v, r) => submit(currentQ, v, step > 5 ? mixed!.id : l.id, r)}
+                  onAnswer={(v, r) => submit(currentQ, v, currentQ.topic ?? l.id, r)}
                 />
               ),
             )}

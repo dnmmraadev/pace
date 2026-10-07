@@ -1,12 +1,13 @@
 import { CheckCircle2 } from 'lucide-react';
-import type { Dispatch, SetStateAction } from 'react';
+import { useState, type Dispatch, type SetStateAction } from 'react';
 import { findLesson, type Question } from '../../data/curriculum';
 import { mastery, type Progress } from '../../domain/learning';
 import { es } from '../../i18n/es';
 import { getPreferences } from '../../shared/storage/preferences';
+import { competencyName } from '../../domain/practice';
+import { ReviewSession } from './ReviewSession';
 
 import { SectionTitle } from '../../shared/ui/SectionTitle';
-import { QuestionForm } from '../lessons/QuestionForm';
 
 type Props = {
   p: Progress;
@@ -26,6 +27,7 @@ export function ReviewPage({
   submit,
   navigate,
 }: Props) {
+  const [selectedConcept, setSelectedConcept] = useState<string>();
   return (
     <>
       <SectionTitle
@@ -35,6 +37,9 @@ export function ReviewPage({
           'Missed concepts return immediately, then after roughly 1, 3 and 7 days of successful practice. This is a simple spacing heuristic, not an optimal schedule.',
         )}
       />
+      <p>
+        {es('Historical fixed answers are retained. Review uses new data and first submissions.')}
+      </p>
       {es(
         !p.reviews.length ? (
           <div className="empty-state">
@@ -53,14 +58,16 @@ export function ReviewPage({
           p.reviews.map((r) => (
             <button
               className="lesson-row"
-              key={r.topic}
+              key={`${r.topic}-${r.concept ?? 'legacy'}`}
               onClick={() => {
                 setReviewId(r.topic);
+                setSelectedConcept(r.concept);
                 setSessionKey((k) => k + 1);
               }}
             >
               <span>
                 {es(findLesson(r.topic)?.title)}
+                {r.concept && <small>{competencyName(r.concept, getPreferences().language)}</small>}
                 <small>
                   {es(
                     r.due <= Date.now()
@@ -82,16 +89,12 @@ export function ReviewPage({
         reviewId && (
           <section className="review-session" key={sessionKey}>
             <h2>{es(findLesson(reviewId).title)}</h2>
-            <p className="muted">
-              {es('Three different correct answers move this topic to its next review interval.')}
-            </p>
-            {es(
-              findLesson(reviewId)
-                .questions.slice(0, 3)
-                .map((q) => (
-                  <QuestionForm key={q.id} q={q} onAnswer={(v) => submit(q, v, reviewId)} />
-                )),
-            )}
+            <ReviewSession
+              topic={reviewId}
+              concept={selectedConcept}
+              progress={p}
+              submit={submit}
+            />
           </section>
         ),
       )}

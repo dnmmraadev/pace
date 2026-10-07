@@ -1,10 +1,10 @@
 # Versioning and releases
 
-## Current release: 0.2.0
+## Current source version: 0.3.0
 
-PACE uses [Semantic Versioning 2.0.0](https://semver.org/) and publishes plain MAJOR.MINOR.PATCH version numbers. The current release is **0.2.0**, without a prerelease suffix, and is published as a regular GitHub release.
+PACE uses [Semantic Versioning 2.0.0](https://semver.org/) and publishes plain MAJOR.MINOR.PATCH version numbers. The current source version is **0.3.0**, a feature release prepared locally. The latest published GitHub release remains **0.2.0**; 0.3.0 is not automatically tagged or published by packaging.
 
-This version retains the White Gold visual system, light/dark appearance, Spanish/English selection and optional device-local onboarding. It contains the same learning functionality as the previous evaluation build. Removing the suffix does not change saved-progress compatibility or constitute a new 1.0 compatibility promise. The leading zero continues to indicate initial development.
+0.3.0 retains the White Gold visual system and local-first browser/Electron delivery while adding variable practice, concept evidence, interviews, analyst assignments and transfer. Saved-progress schema version 1 and its storage key remain unchanged: optional metadata is additive and legacy completion/history/capstone remain usable. Assessment semantics deliberately change: historical fixed answers no longer confer proficiency, which now requires distinct generated instances. This is explained to learners; no destructive data migration is required. The leading zero continues to indicate initial development.
 
 ## Compatibility contract
 
